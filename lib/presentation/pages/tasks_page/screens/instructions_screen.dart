@@ -20,10 +20,13 @@ class InstructionsScreen extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(32.w, 41.h, 0, 0),
-          child: Image(
-            image: const AssetImage(AppImages.arrowImage),
+          child: SizedBox(
             width: 232.w,
             height: 404.h,
+            child: const Image(
+              image: AssetImage(AppImages.arrowImage),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
       ],

@@ -12,13 +12,13 @@ class FloatingButtonsWidget extends StatelessWidget {
       children: [
         Image(
           image: const AssetImage(AppImages.infoIcon),
-          width: 42.w,
-          height: 42.w,
+          width: 52.w,
+          height: 52.w,
         ),
         Image(
           image: const AssetImage(AppImages.addIcon),
-          width: 42.w,
-          height: 42.w,
+          width: 52.w,
+          height: 52.w,
         ),
       ],
     );

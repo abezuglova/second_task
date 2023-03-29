@@ -33,7 +33,7 @@ class TasksPage extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: 685.h,
+              bottom: 20.h,
               left: 20.w,
               right: 20.w,
               child: const FloatingButtonsWidget()),
