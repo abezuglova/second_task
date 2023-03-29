@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
+import 'package:second_task/presentation/navigation/routes.dart';
 import 'package:second_task/presentation/pages/tasks_page/tasks_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -110,10 +111,10 @@ class MyApp extends StatelessWidget {
               ),
             ).apply(fontSizeFactor: 1.sp),
           ),
-          home: child,
+          routes: AppRoutes.routes,
+          initialRoute: AppRoutes.initialRoute,
         );
       },
-      child: TasksPage(),
     );
   }
 }
