@@ -20,10 +20,18 @@ class TasksPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'My tasks',
                       style: textTheme.headlineLarge,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Hide complited',
+                        style: textTheme.labelLarge,
+                      ),
                     ),
                   ],
                 ),

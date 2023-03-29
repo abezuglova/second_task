@@ -29,6 +29,22 @@ class MyApp extends StatelessWidget {
                 elevation: 0,
               ),
             ),
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: AppColors.buttonBackgroundColor,
+              sizeConstraints: BoxConstraints(
+                minWidth: 42.w,
+                minHeight: 42.w,
+                maxWidth: 42.w,
+                maxHeight: 42.w,
+              ),
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ),
             textTheme: TextTheme(
               bodySmall: GoogleFonts.openSans(
                 color: AppColors.mainTextColor,
