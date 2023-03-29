@@ -9,13 +9,13 @@ class BottomTapBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(0, 9, 0, 16),
+      padding: EdgeInsets.fromLTRB(0, 9.h, 0, 16.w),
       decoration: BoxDecoration(
         color: AppColors.bottomTapBarColor.withOpacity(0.94),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),
-            offset: const Offset(0, -0.5),
+            offset: Offset(0, -0.5.h),
           ),
         ],
       ),

@@ -7,25 +7,20 @@ class FloatingButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 685.h,
-      left: 20.w,
-      right: 20.w,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Image(
-            image: const AssetImage(AppImages.infoIcon),
-            width: 42.w,
-            height: 42.w,
-          ),
-          Image(
-            image: const AssetImage(AppImages.addIcon),
-            width: 42.w,
-            height: 42.w,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Image(
+          image: const AssetImage(AppImages.infoIcon),
+          width: 42.w,
+          height: 42.w,
+        ),
+        Image(
+          image: const AssetImage(AppImages.addIcon),
+          width: 42.w,
+          height: 42.w,
+        ),
+      ],
     );
   }
 }
