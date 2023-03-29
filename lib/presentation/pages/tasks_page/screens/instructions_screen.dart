@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_images.dart';
 
 class InstructionsScreen extends StatelessWidget {
@@ -23,10 +24,7 @@ class InstructionsScreen extends StatelessWidget {
           child: SizedBox(
             width: 232.w,
             height: 404.h,
-            child: const Image(
-              image: AssetImage(AppImages.arrowImage),
-              fit: BoxFit.fill,
-            ),
+            child: SvgPicture.asset(AppImages.arrow)
           ),
         ),
       ],

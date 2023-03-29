@@ -18,7 +18,7 @@ class FloatingButtonsWidget extends StatelessWidget {
             AppRoutes.infoPageRoute,
           ),
           child: SvgPicture.asset(
-            AppImages.infoButton,
+            AppImages.infoIcon,
             width: 32.w,
             height: 32.w,
           ),
@@ -27,7 +27,7 @@ class FloatingButtonsWidget extends StatelessWidget {
           heroTag: 'add_button',
           onPressed: () {},
           child: SvgPicture.asset(
-            AppImages.addButton,
+            AppImages.addIcon,
             width: 20.35.w,
             height: 20.35.w,
           ),
