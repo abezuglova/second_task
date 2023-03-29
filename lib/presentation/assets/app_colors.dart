@@ -6,4 +6,5 @@ class AppColors {
   static const textButtonColor = Color(0xFF3478F6);
   static const systemButtonColor = Color(0xFF007AFF);
   static const dateTimeColor = Color(0xFFA3A3A3);
+  static const buttonBackgroundColor = Color(0xFF171717);
 }

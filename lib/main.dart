@@ -20,6 +20,15 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.buttonBackgroundColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(11.58.r)),
+                ),
+                elevation: 0,
+              ),
+            ),
             textTheme: TextTheme(
               bodySmall: GoogleFonts.openSans(
                 color: AppColors.mainTextColor,
