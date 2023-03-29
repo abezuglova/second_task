@@ -9,23 +9,22 @@ class FloatingButtonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: 685.h,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image(
-              image: const AssetImage(AppImages.infoIcon),
-              width: 42.w,
-              height: 42.w,
-            ),
-            Image(
-              image: const AssetImage(AppImages.addIcon),
-              width: 42.w,
-              height: 42.w,
-            ),
-          ],
-        ),
+      left: 20.w,
+      right: 20.w,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image(
+            image: const AssetImage(AppImages.infoIcon),
+            width: 42.w,
+            height: 42.w,
+          ),
+          Image(
+            image: const AssetImage(AppImages.addIcon),
+            width: 42.w,
+            height: 42.w,
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:second_task/presentation/assets/app_colors.dart';
 import 'package:second_task/presentation/pages/tasks_page/tasks_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +20,73 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              textTheme:
+                  GoogleFonts.openSansTextTheme(Theme.of(context).textTheme)
+                      .copyWith(
+                        bodySmall: TextStyle(
+                          color: AppColors.mainTextColor,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w600,
+                          height: 20 / 15,
+                          letterSpacing: -0.24,
+                        ),
+                        bodyMedium: TextStyle(
+                          color: AppColors.systemButtonColor,
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.normal,
+                          height: 22 / 17,
+                          letterSpacing: -0.41,
+                        ),
+                        bodyLarge: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.normal,
+                          height: 28 / 22,
+                          letterSpacing: 0.35,
+                        ),
+                        headlineSmall: TextStyle(
+                          color: AppColors.dateTimeColor,
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.normal,
+                          fontStyle: FontStyle.italic,
+                          height: 18 / 13,
+                          letterSpacing: -0.08,
+                        ),
+                        headlineMedium: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w600,
+                          height: 24 / 20,
+                          letterSpacing: 0.38,
+                        ),
+                        headlineLarge: TextStyle(
+                          color: Colors.black,
+                          fontSize: 34.sp,
+                          fontWeight: FontWeight.bold,
+                          height: 41 / 34,
+                          letterSpacing: 0.37,
+                        ),
+                        labelSmall: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.06.sp,
+                          fontWeight: FontWeight.w600,
+                          height: 18.2 / 14.06,
+                          letterSpacing: -0.34,
+                        ),
+                        labelMedium: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                          height: 22 / 17,
+                          letterSpacing: -0.41,
+                        ),
+                        labelLarge: TextStyle(
+                          color: AppColors.textButtonColor,
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                      .apply(fontSizeFactor: 1.sp),
             ),
             home: TasksPage(),
           );

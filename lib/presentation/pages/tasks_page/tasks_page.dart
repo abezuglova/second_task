@@ -9,6 +9,7 @@ class TasksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Stack(
         children: [
@@ -17,8 +18,8 @@ class TasksPage extends StatelessWidget {
             child: Column(
               children: [
                 Row(
-                  children: const [
-                    Text('My tasks'),
+                  children: [
+                    Text('My tasks', style: textTheme.headlineLarge,),
                   ],
                 ),
                 const TasksScreen(tasksList: []),
