@@ -24,7 +24,7 @@ class InstructionsScreen extends StatelessWidget {
           child: SizedBox(
             width: 232.w,
             height: 404.h,
-            child: SvgPicture.asset(AppImages.arrow)
+            child: SvgPicture.asset(AppImages.arrow),
           ),
         ),
       ],
