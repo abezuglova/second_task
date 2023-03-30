@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/tasks_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
@@ -36,7 +37,26 @@ class TasksPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 41.h),
-                const InstructionsScreen(),
+                Expanded(
+                  child: TasksScreen(
+                    tasksList: [
+                      Task(
+                        id: 0,
+                        name:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                        creatingDateTime: DateTime.now(),
+                        isDone: false,
+                      ),
+                      Task(
+                        id: 1,
+                        name:
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                        creatingDateTime: DateTime.now(),
+                        isDone: true,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

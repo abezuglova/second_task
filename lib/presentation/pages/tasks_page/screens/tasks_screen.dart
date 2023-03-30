@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task/domain/entities/task.dart';
+import 'package:second_task/presentation/pages/tasks_page/widgets/task_widget.dart';
 
 class TasksScreen extends StatelessWidget {
   final List<Task> tasksList;
@@ -10,6 +12,12 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.separated(
+        itemBuilder: (BuildContext context, int index) => TaskWidget(
+              task: tasksList[index],
+              onStatusChanged: (bool value) {},
+            ),
+        separatorBuilder: (context, index) => SizedBox(height: 20.h),
+        itemCount: tasksList.length);
   }
 }
