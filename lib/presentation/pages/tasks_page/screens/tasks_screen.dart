@@ -13,6 +13,7 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+        padding: EdgeInsets.zero,
         itemBuilder: (BuildContext context, int index) => TaskWidget(
               task: tasksList[index],
               onStatusChanged: (bool value) {},

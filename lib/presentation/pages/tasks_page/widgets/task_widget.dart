@@ -36,7 +36,7 @@ class TaskWidget extends StatelessWidget {
                   maxLines: 10,
                 ),
                 Text(
-                  '${task.creatingDateTime}',
+                  '${task.termDateTime}',
                   style: textTheme.headlineSmall?.copyWith(
                     decoration: task.isDone ? TextDecoration.lineThrough : null,
                   ),

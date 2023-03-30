@@ -6,4 +6,5 @@ class AppImages {
   static const timeSortIcon = 'images/time_sort_icon.svg';
   static const arrow = 'images/arrow.svg';
   static const daw = 'images/daw.svg';
+  static const chevronLeftIcon = 'images/chevron_left_icon.svg';
 }

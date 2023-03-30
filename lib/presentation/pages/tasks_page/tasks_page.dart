@@ -44,14 +44,14 @@ class TasksPage extends StatelessWidget {
                         id: 0,
                         name:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                        creatingDateTime: DateTime.now(),
+                        termDateTime: DateTime.now(),
                         isDone: false,
                       ),
                       Task(
                         id: 1,
                         name:
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                        creatingDateTime: DateTime.now(),
+                        termDateTime: DateTime.now(),
                         isDone: true,
                       ),
                     ],
