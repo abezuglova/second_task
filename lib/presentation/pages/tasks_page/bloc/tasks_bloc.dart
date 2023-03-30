@@ -2,15 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:second_task/data/repository/mock_tasks_repository.dart';
 import 'package:second_task/domain/entities/task.dart';
+import 'package:second_task/domain/repository/i_tasks_repository.dart';
 
 part 'tasks_event.dart';
 part 'tasks_state.dart';
 part 'tasks_bloc.freezed.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
-  TasksBloc() : super(const _LoadInProgress()) {
+  final ITasksRepository tasksRepository;
+  TasksBloc(this.tasksRepository) : super(const _LoadInProgress()) {
     on<_PageOpened>(_onPageOpened);
   }
 
@@ -19,10 +20,12 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     Emitter<TasksState> emit,
   ) async {
     try {
-      final tasks = await MockTasksRepository().getTasksList();
+      final tasks = await tasksRepository.getTasksList();
       emit(
         TasksState.loadSuccess(
-            tasksList: tasks, showInstructions: tasks.isEmpty ? true : false),
+          tasksList: tasks,
+          showInstructions: tasks.isEmpty ? true : false,
+        ),
       );
     } catch (error, stackTrace) {
       log(

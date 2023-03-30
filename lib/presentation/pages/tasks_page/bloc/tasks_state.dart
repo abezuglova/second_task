@@ -1,6 +1,6 @@
 part of 'tasks_bloc.dart';
 
-@freezed
+@Freezed(equal: false)
 class TasksState with _$TasksState {
   const factory TasksState.loadInProgress() = _LoadInProgress;
   const factory TasksState.loadSuccess({

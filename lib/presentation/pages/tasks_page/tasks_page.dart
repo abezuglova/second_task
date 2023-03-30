@@ -17,7 +17,7 @@ class TasksPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: BlocProvider<TasksBloc>(
-        create: (context) => TasksBloc()..add(const TasksEvent.pageOpened()),
+        create: (context) => TasksBloc(context.read())..add(const TasksEvent.pageOpened()),
         child: Stack(
           children: [
             Column(
@@ -48,7 +48,7 @@ class TasksPage extends StatelessWidget {
                       return state.map(
                         loadInProgress: (state) => const LoadingScreen(),
                         loadFailure: (state) => const ErrorScreen(),
-                        loadSuccess: (state) => TasksScreen(
+                        loadSuccess: (state) => state.showInstructions ? const InstructionsScreen() : TasksScreen(
                           tasksList: state.tasksList,
                         ),
                       );

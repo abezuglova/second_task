@@ -971,15 +971,6 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadInProgress);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
@@ -1112,21 +1103,6 @@ class _$_LoadSuccess implements _LoadSuccess {
     return 'TasksState.loadSuccess(tasksList: $tasksList, showInstructions: $showInstructions)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoadSuccess &&
-            const DeepCollectionEquality()
-                .equals(other._tasksList, _tasksList) &&
-            (identical(other.showInstructions, showInstructions) ||
-                other.showInstructions == showInstructions));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_tasksList), showInstructions);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1255,18 +1231,6 @@ class _$_LoadFailure implements _LoadFailure {
   String toString() {
     return 'TasksState.loadFailure(loadError: $loadError)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoadFailure &&
-            const DeepCollectionEquality().equals(other.loadError, loadError));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(loadError));
 
   @JsonKey(ignore: true)
   @override

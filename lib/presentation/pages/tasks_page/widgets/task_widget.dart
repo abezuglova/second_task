@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/custom_checkbox_widget.dart';
 
@@ -36,7 +37,7 @@ class TaskWidget extends StatelessWidget {
                   maxLines: 10,
                 ),
                 Text(
-                  '${task.termDateTime}',
+                  DateFormat('dd.MM.y HH:mm').format(task.termDateTime),
                   style: textTheme.headlineSmall?.copyWith(
                     decoration: task.isDone ? TextDecoration.lineThrough : null,
                   ),
