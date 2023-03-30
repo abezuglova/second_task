@@ -1,26 +1,12 @@
-class Task {
-  final int id;
-  final String name;
-  final DateTime termDateTime;
-  final bool isDone;
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'task.freezed.dart';
 
-  Task({
-    required this.id,
-    required this.name,
-    required this.termDateTime,
-    required this.isDone,
-  });
-
-  Task copyWith({
-    int? id,
-    String? name,
-    DateTime? termDateTime,
-    bool? isDone,
-  }) {
-    return Task(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        termDateTime: termDateTime ?? this.termDateTime,
-        isDone: isDone ?? this.isDone);
-  }
+@freezed
+class Task with _$Task {
+  const factory Task({
+    required int id,
+    required String name,
+    required DateTime termDateTime,
+    required bool isDone,
+  }) = _Task;
 }
