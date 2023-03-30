@@ -8,4 +8,5 @@ class AppColors {
   static const dateTimeColor = Color(0xFFA3A3A3);
   static const buttonBackgroundColor = Color(0xFF171717);
   static const checkboxBorderColor = Color(0xFFE8E8E8);
+  static const timePickerColor = Color(0xFF767680);
 }
