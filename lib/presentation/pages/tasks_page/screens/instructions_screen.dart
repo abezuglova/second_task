@@ -9,25 +9,28 @@ class InstructionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 153.w,
-          child: Text(
-            'Looks like there is no tasks yet! Go ahead and push a plus button below',
-            style: textTheme.bodySmall,
+    return Padding(
+      padding: EdgeInsets.fromLTRB(27.w, 41.h, 14.w, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 153.w,
+            child: Text(
+              'Looks like there is no tasks yet! Go ahead and push a plus button below',
+              style: textTheme.bodySmall,
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(32.w, 41.h, 0, 0),
-          child: SizedBox(
-            width: 232.w,
-            height: 404.h,
-            child: SvgPicture.asset(AppImages.arrow),
+          Padding(
+            padding: EdgeInsets.fromLTRB(32.w, 41.h, 0, 0),
+            child: SizedBox(
+              width: 232.w,
+              height: 404.h,
+              child: SvgPicture.asset(AppImages.arrow),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

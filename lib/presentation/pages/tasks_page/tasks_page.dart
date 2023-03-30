@@ -20,12 +20,12 @@ class TasksPage extends StatelessWidget {
         create: (context) => TasksBloc()..add(const TasksEvent.pageOpened()),
         child: Stack(
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(27.w, 60.h, 14.w, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(27.w, 60.h, 14.w, 0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -41,22 +41,21 @@ class TasksPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 41.h),
-                  Expanded(
-                    child: BlocBuilder<TasksBloc, TasksState>(
-                      builder: (context, state) {
-                        return state.map(
-                          loadInProgress: (state) => const LoadingScreen(),
-                          loadFailure: (state) => const ErrorScreen(),
-                          loadSuccess: (state) => TasksScreen(
-                            tasksList: state.tasksList,
-                          ),
-                        );
-                      },
-                    ),
+                ),
+                Expanded(
+                  child: BlocBuilder<TasksBloc, TasksState>(
+                    builder: (context, state) {
+                      return state.map(
+                        loadInProgress: (state) => const LoadingScreen(),
+                        loadFailure: (state) => const ErrorScreen(),
+                        loadSuccess: (state) => TasksScreen(
+                          tasksList: state.tasksList,
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Positioned(
                 bottom: 20.h,
