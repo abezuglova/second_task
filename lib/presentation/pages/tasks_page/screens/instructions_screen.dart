@@ -13,7 +13,7 @@ class InstructionsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 160.w,
+          width: 153.w,
           child: Text(
             'Looks like there is no tasks yet! Go ahead and push a plus button below',
             style: textTheme.bodySmall,

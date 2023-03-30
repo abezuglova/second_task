@@ -108,7 +108,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,
               ),
-            ).apply(fontSizeFactor: 1.sp),
+            ).apply(fontSizeFactor: 0.95.sp),
           ),
           routes: AppRoutes.routes,
           initialRoute: AppRoutes.initialRoute,
