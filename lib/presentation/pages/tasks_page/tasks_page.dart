@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
+import 'package:second_task/presentation/pages/tasks_page/screens/error_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
+import 'package:second_task/presentation/pages/tasks_page/screens/loading_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/tasks_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/floating_buttons_widget.dart';
@@ -34,7 +35,7 @@ class TasksPage extends StatelessWidget {
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          'Hide complited',
+                          'Hide completed',
                           style: textTheme.labelLarge,
                         ),
                       ),
@@ -42,23 +43,16 @@ class TasksPage extends StatelessWidget {
                   ),
                   SizedBox(height: 41.h),
                   Expanded(
-                    child: TasksScreen(
-                      tasksList: [
-                        Task(
-                          id: 0,
-                          name:
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                          termDateTime: DateTime.now(),
-                          isDone: false,
-                        ),
-                        Task(
-                          id: 1,
-                          name:
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                          termDateTime: DateTime.now(),
-                          isDone: true,
-                        ),
-                      ],
+                    child: BlocBuilder<TasksBloc, TasksState>(
+                      builder: (context, state) {
+                        return state.map(
+                          loadInProgress: (state) => const LoadingScreen(),
+                          loadFailure: (state) => const ErrorScreen(),
+                          loadSuccess: (state) => TasksScreen(
+                            tasksList: state.tasksList,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

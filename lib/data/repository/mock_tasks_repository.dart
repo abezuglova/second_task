@@ -2,7 +2,20 @@ import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 
 class MockTasksRepository implements ITasksRepository {
-  final _tasksList = <Task>[];
+  final _tasksList = <Task>[
+    Task(
+      id: 0,
+      name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      termDateTime: DateTime.now(),
+      isDone: false,
+    ),
+    Task(
+      id: 1,
+      name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      termDateTime: DateTime.now(),
+      isDone: true,
+    ),
+  ];
 
   @override
   Future<void> addTask(Task task) async {

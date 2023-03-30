@@ -8,6 +8,6 @@ class TasksState with _$TasksState {
     required bool showInstructions,
   }) = _LoadSuccess;
   const factory TasksState.loadFailure({
-    required Exception loadError,
+    required Object loadError,
   }) = _LoadFailure;
 }

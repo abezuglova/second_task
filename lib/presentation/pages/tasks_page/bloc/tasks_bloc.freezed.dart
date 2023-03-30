@@ -884,21 +884,21 @@ mixin _$TasksState {
     required TResult Function() loadInProgress,
     required TResult Function(List<Task> tasksList, bool showInstructions)
         loadSuccess,
-    required TResult Function(Exception loadError) loadFailure,
+    required TResult Function(Object loadError) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult? Function(Exception loadError)? loadFailure,
+    TResult? Function(Object loadError)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult Function(Exception loadError)? loadFailure,
+    TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -985,7 +985,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function() loadInProgress,
     required TResult Function(List<Task> tasksList, bool showInstructions)
         loadSuccess,
-    required TResult Function(Exception loadError) loadFailure,
+    required TResult Function(Object loadError) loadFailure,
   }) {
     return loadInProgress();
   }
@@ -995,7 +995,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult? Function(Exception loadError)? loadFailure,
+    TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -1005,7 +1005,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult Function(Exception loadError)? loadFailure,
+    TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -1139,7 +1139,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function() loadInProgress,
     required TResult Function(List<Task> tasksList, bool showInstructions)
         loadSuccess,
-    required TResult Function(Exception loadError) loadFailure,
+    required TResult Function(Object loadError) loadFailure,
   }) {
     return loadSuccess(tasksList, showInstructions);
   }
@@ -1149,7 +1149,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult? Function(Exception loadError)? loadFailure,
+    TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadSuccess?.call(tasksList, showInstructions);
   }
@@ -1159,7 +1159,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult Function(Exception loadError)? loadFailure,
+    TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -1221,7 +1221,7 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
   @useResult
-  $Res call({Exception loadError});
+  $Res call({Object loadError});
 }
 
 /// @nodoc
@@ -1238,10 +1238,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
     Object? loadError = null,
   }) {
     return _then(_$_LoadFailure(
-      loadError: null == loadError
-          ? _value.loadError
-          : loadError // ignore: cast_nullable_to_non_nullable
-              as Exception,
+      loadError: null == loadError ? _value.loadError : loadError,
     ));
   }
 }
@@ -1252,7 +1249,7 @@ class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure({required this.loadError});
 
   @override
-  final Exception loadError;
+  final Object loadError;
 
   @override
   String toString() {
@@ -1264,12 +1261,12 @@ class _$_LoadFailure implements _LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadFailure &&
-            (identical(other.loadError, loadError) ||
-                other.loadError == loadError));
+            const DeepCollectionEquality().equals(other.loadError, loadError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loadError);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(loadError));
 
   @JsonKey(ignore: true)
   @override
@@ -1283,7 +1280,7 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function() loadInProgress,
     required TResult Function(List<Task> tasksList, bool showInstructions)
         loadSuccess,
-    required TResult Function(Exception loadError) loadFailure,
+    required TResult Function(Object loadError) loadFailure,
   }) {
     return loadFailure(loadError);
   }
@@ -1293,7 +1290,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult? Function(Exception loadError)? loadFailure,
+    TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadFailure?.call(loadError);
   }
@@ -1303,7 +1300,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
-    TResult Function(Exception loadError)? loadFailure,
+    TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1348,10 +1345,10 @@ class _$_LoadFailure implements _LoadFailure {
 }
 
 abstract class _LoadFailure implements TasksState {
-  const factory _LoadFailure({required final Exception loadError}) =
+  const factory _LoadFailure({required final Object loadError}) =
       _$_LoadFailure;
 
-  Exception get loadError;
+  Object get loadError;
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
