@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
+import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_appbar_widget.dart';
 
 class AddTaskWidget extends StatefulWidget {
@@ -180,7 +182,23 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     width: 316.w,
                     height: 46.32.h,
                     child: ElevatedButton(
-                      onPressed: taskName.isEmpty ? null : () {},
+                      onPressed: taskName.isEmpty
+                          ? null
+                          : () {
+                              BlocProvider.of<TasksBloc>(context).add(
+                                TasksEvent.taskAdded(
+                                  taskName: taskName,
+                                  taskTerm: DateTime(
+                                    date.year,
+                                    date.month,
+                                    date.day,
+                                    time.hour,
+                                    time.minute,
+                                  ),
+                                ),
+                              );
+                              Navigator.of(context).pop();
+                            },
                       child: Text(
                         'Done',
                         style: textTheme.labelSmall,

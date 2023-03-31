@@ -20,7 +20,7 @@ class MockTasksRepository implements ITasksRepository {
   @override
   Future<void> addTask(Task task) async {
     await Future.delayed(const Duration(seconds: 1));
-    _tasksList.add(task);
+    _tasksList.add(task.copyWith(id: _tasksList.length));
   }
 
   @override

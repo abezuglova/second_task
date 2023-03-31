@@ -882,7 +882,8 @@ mixin _$TasksState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions)
+    required TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) =>
@@ -890,37 +891,41 @@ mixin _$TasksState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult? Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(TasksLoadInProgress value) loadInProgress,
+    required TResult Function(TasksLoadSuccess value) loadSuccess,
+    required TResult Function(TasksLoadFailure value) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(TasksLoadInProgress value)? loadInProgress,
+    TResult? Function(TasksLoadSuccess value)? loadSuccess,
+    TResult? Function(TasksLoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(TasksLoadInProgress value)? loadInProgress,
+    TResult Function(TasksLoadSuccess value)? loadSuccess,
+    TResult Function(TasksLoadFailure value)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -945,25 +950,25 @@ class _$TasksStateCopyWithImpl<$Res, $Val extends TasksState>
 }
 
 /// @nodoc
-abstract class _$$_LoadInProgressCopyWith<$Res> {
-  factory _$$_LoadInProgressCopyWith(
-          _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
-      __$$_LoadInProgressCopyWithImpl<$Res>;
+abstract class _$$TasksLoadInProgressCopyWith<$Res> {
+  factory _$$TasksLoadInProgressCopyWith(_$TasksLoadInProgress value,
+          $Res Function(_$TasksLoadInProgress) then) =
+      __$$TasksLoadInProgressCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_LoadInProgress>
-    implements _$$_LoadInProgressCopyWith<$Res> {
-  __$$_LoadInProgressCopyWithImpl(
-      _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
+class __$$TasksLoadInProgressCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$TasksLoadInProgress>
+    implements _$$TasksLoadInProgressCopyWith<$Res> {
+  __$$TasksLoadInProgressCopyWithImpl(
+      _$TasksLoadInProgress _value, $Res Function(_$TasksLoadInProgress) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadInProgress implements _LoadInProgress {
-  const _$_LoadInProgress();
+class _$TasksLoadInProgress implements TasksLoadInProgress {
+  const _$TasksLoadInProgress();
 
   @override
   String toString() {
@@ -974,7 +979,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions)
+    required TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
@@ -985,7 +991,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult? Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadInProgress?.call();
@@ -995,7 +1003,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
@@ -1008,9 +1018,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(TasksLoadInProgress value) loadInProgress,
+    required TResult Function(TasksLoadSuccess value) loadSuccess,
+    required TResult Function(TasksLoadFailure value) loadFailure,
   }) {
     return loadInProgress(this);
   }
@@ -1018,9 +1028,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(TasksLoadInProgress value)? loadInProgress,
+    TResult? Function(TasksLoadSuccess value)? loadSuccess,
+    TResult? Function(TasksLoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -1028,9 +1038,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(TasksLoadInProgress value)? loadInProgress,
+    TResult Function(TasksLoadSuccess value)? loadSuccess,
+    TResult Function(TasksLoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -1040,25 +1050,29 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 }
 
-abstract class _LoadInProgress implements TasksState {
-  const factory _LoadInProgress() = _$_LoadInProgress;
+abstract class TasksLoadInProgress implements TasksState {
+  const factory TasksLoadInProgress() = _$TasksLoadInProgress;
 }
 
 /// @nodoc
-abstract class _$$_LoadSuccessCopyWith<$Res> {
-  factory _$$_LoadSuccessCopyWith(
-          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
-      __$$_LoadSuccessCopyWithImpl<$Res>;
+abstract class _$$TasksLoadSuccessCopyWith<$Res> {
+  factory _$$TasksLoadSuccessCopyWith(
+          _$TasksLoadSuccess value, $Res Function(_$TasksLoadSuccess) then) =
+      __$$TasksLoadSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Task> tasksList, bool showInstructions});
+  $Res call(
+      {List<Task> tasksList,
+      bool showInstructions,
+      bool isUpdateInProgress,
+      Object? updatingError});
 }
 
 /// @nodoc
-class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_LoadSuccess>
-    implements _$$_LoadSuccessCopyWith<$Res> {
-  __$$_LoadSuccessCopyWithImpl(
-      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+class __$$TasksLoadSuccessCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$TasksLoadSuccess>
+    implements _$$TasksLoadSuccessCopyWith<$Res> {
+  __$$TasksLoadSuccessCopyWithImpl(
+      _$TasksLoadSuccess _value, $Res Function(_$TasksLoadSuccess) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1066,8 +1080,10 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
   $Res call({
     Object? tasksList = null,
     Object? showInstructions = null,
+    Object? isUpdateInProgress = null,
+    Object? updatingError = freezed,
   }) {
-    return _then(_$_LoadSuccess(
+    return _then(_$TasksLoadSuccess(
       tasksList: null == tasksList
           ? _value._tasksList
           : tasksList // ignore: cast_nullable_to_non_nullable
@@ -1076,15 +1092,24 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
           ? _value.showInstructions
           : showInstructions // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUpdateInProgress: null == isUpdateInProgress
+          ? _value.isUpdateInProgress
+          : isUpdateInProgress // ignore: cast_nullable_to_non_nullable
+              as bool,
+      updatingError:
+          freezed == updatingError ? _value.updatingError : updatingError,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(
-      {required final List<Task> tasksList, required this.showInstructions})
+class _$TasksLoadSuccess implements TasksLoadSuccess {
+  const _$TasksLoadSuccess(
+      {required final List<Task> tasksList,
+      required this.showInstructions,
+      this.isUpdateInProgress = false,
+      this.updatingError})
       : _tasksList = tasksList;
 
   final List<Task> _tasksList;
@@ -1097,49 +1122,62 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   final bool showInstructions;
+  @override
+  @JsonKey()
+  final bool isUpdateInProgress;
+  @override
+  final Object? updatingError;
 
   @override
   String toString() {
-    return 'TasksState.loadSuccess(tasksList: $tasksList, showInstructions: $showInstructions)';
+    return 'TasksState.loadSuccess(tasksList: $tasksList, showInstructions: $showInstructions, isUpdateInProgress: $isUpdateInProgress, updatingError: $updatingError)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
-      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
+  _$$TasksLoadSuccessCopyWith<_$TasksLoadSuccess> get copyWith =>
+      __$$TasksLoadSuccessCopyWithImpl<_$TasksLoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions)
+    required TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
-    return loadSuccess(tasksList, showInstructions);
+    return loadSuccess(
+        tasksList, showInstructions, isUpdateInProgress, updatingError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult? Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
-    return loadSuccess?.call(tasksList, showInstructions);
+    return loadSuccess?.call(
+        tasksList, showInstructions, isUpdateInProgress, updatingError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(tasksList, showInstructions);
+      return loadSuccess(
+          tasksList, showInstructions, isUpdateInProgress, updatingError);
     }
     return orElse();
   }
@@ -1147,9 +1185,9 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(TasksLoadInProgress value) loadInProgress,
+    required TResult Function(TasksLoadSuccess value) loadSuccess,
+    required TResult Function(TasksLoadFailure value) loadFailure,
   }) {
     return loadSuccess(this);
   }
@@ -1157,9 +1195,9 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(TasksLoadInProgress value)? loadInProgress,
+    TResult? Function(TasksLoadSuccess value)? loadSuccess,
+    TResult? Function(TasksLoadFailure value)? loadFailure,
   }) {
     return loadSuccess?.call(this);
   }
@@ -1167,9 +1205,9 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(TasksLoadInProgress value)? loadInProgress,
+    TResult Function(TasksLoadSuccess value)? loadSuccess,
+    TResult Function(TasksLoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -1179,33 +1217,37 @@ class _$_LoadSuccess implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements TasksState {
-  const factory _LoadSuccess(
+abstract class TasksLoadSuccess implements TasksState {
+  const factory TasksLoadSuccess(
       {required final List<Task> tasksList,
-      required final bool showInstructions}) = _$_LoadSuccess;
+      required final bool showInstructions,
+      final bool isUpdateInProgress,
+      final Object? updatingError}) = _$TasksLoadSuccess;
 
   List<Task> get tasksList;
   bool get showInstructions;
+  bool get isUpdateInProgress;
+  Object? get updatingError;
   @JsonKey(ignore: true)
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+  _$$TasksLoadSuccessCopyWith<_$TasksLoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailureCopyWith<$Res> {
-  factory _$$_LoadFailureCopyWith(
-          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
-      __$$_LoadFailureCopyWithImpl<$Res>;
+abstract class _$$TasksLoadFailureCopyWith<$Res> {
+  factory _$$TasksLoadFailureCopyWith(
+          _$TasksLoadFailure value, $Res Function(_$TasksLoadFailure) then) =
+      __$$TasksLoadFailureCopyWithImpl<$Res>;
   @useResult
   $Res call({Object loadError});
 }
 
 /// @nodoc
-class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_LoadFailure>
-    implements _$$_LoadFailureCopyWith<$Res> {
-  __$$_LoadFailureCopyWithImpl(
-      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+class __$$TasksLoadFailureCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$TasksLoadFailure>
+    implements _$$TasksLoadFailureCopyWith<$Res> {
+  __$$TasksLoadFailureCopyWithImpl(
+      _$TasksLoadFailure _value, $Res Function(_$TasksLoadFailure) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1213,7 +1255,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
   $Res call({
     Object? loadError = null,
   }) {
-    return _then(_$_LoadFailure(
+    return _then(_$TasksLoadFailure(
       loadError: null == loadError ? _value.loadError : loadError,
     ));
   }
@@ -1221,8 +1263,8 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadFailure implements _LoadFailure {
-  const _$_LoadFailure({required this.loadError});
+class _$TasksLoadFailure implements TasksLoadFailure {
+  const _$TasksLoadFailure({required this.loadError});
 
   @override
   final Object loadError;
@@ -1235,14 +1277,15 @@ class _$_LoadFailure implements _LoadFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
-      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
+  _$$TasksLoadFailureCopyWith<_$TasksLoadFailure> get copyWith =>
+      __$$TasksLoadFailureCopyWithImpl<_$TasksLoadFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions)
+    required TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
@@ -1253,7 +1296,9 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult? Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadFailure?.call(loadError);
@@ -1263,7 +1308,9 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions)? loadSuccess,
+    TResult Function(List<Task> tasksList, bool showInstructions,
+            bool isUpdateInProgress, Object? updatingError)?
+        loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
@@ -1276,9 +1323,9 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(TasksLoadInProgress value) loadInProgress,
+    required TResult Function(TasksLoadSuccess value) loadSuccess,
+    required TResult Function(TasksLoadFailure value) loadFailure,
   }) {
     return loadFailure(this);
   }
@@ -1286,9 +1333,9 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_LoadSuccess value)? loadSuccess,
-    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(TasksLoadInProgress value)? loadInProgress,
+    TResult? Function(TasksLoadSuccess value)? loadSuccess,
+    TResult? Function(TasksLoadFailure value)? loadFailure,
   }) {
     return loadFailure?.call(this);
   }
@@ -1296,9 +1343,9 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(TasksLoadInProgress value)? loadInProgress,
+    TResult Function(TasksLoadSuccess value)? loadSuccess,
+    TResult Function(TasksLoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1308,12 +1355,12 @@ class _$_LoadFailure implements _LoadFailure {
   }
 }
 
-abstract class _LoadFailure implements TasksState {
-  const factory _LoadFailure({required final Object loadError}) =
-      _$_LoadFailure;
+abstract class TasksLoadFailure implements TasksState {
+  const factory TasksLoadFailure({required final Object loadError}) =
+      _$TasksLoadFailure;
 
   Object get loadError;
   @JsonKey(ignore: true)
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+  _$$TasksLoadFailureCopyWith<_$TasksLoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

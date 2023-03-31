@@ -5,6 +5,7 @@ import 'package:second_task/presentation/pages/tasks_page/screens/error_screen.d
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/loading_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/tasks_screen.dart';
+import 'package:second_task/presentation/pages/tasks_page/screens/updating_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/floating_buttons_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,10 @@ class TasksPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: BlocProvider<TasksBloc>(
-        create: (context) => TasksBloc(context.read())..add(const TasksEvent.pageOpened()),
+        create: (context) => TasksBloc(context.read())
+          ..add(
+            const TasksEvent.pageOpened(),
+          ),
         child: Stack(
           children: [
             Column(
@@ -43,14 +47,35 @@ class TasksPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: BlocBuilder<TasksBloc, TasksState>(
+                  child: BlocConsumer<TasksBloc, TasksState>(
+                    listenWhen: (previous, current) =>
+                        current is TasksLoadSuccess &&
+                        current.updatingError != null,
+                    listener: (context, state) => showDialog(
+                      context: context,
+                      builder: (context) => Dialog(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 16.h),
+                          child: Text(
+                            'Ошибка обновления данных',
+                            style: textTheme.bodySmall,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
                     builder: (context, state) {
                       return state.map(
                         loadInProgress: (state) => const LoadingScreen(),
                         loadFailure: (state) => const ErrorScreen(),
-                        loadSuccess: (state) => state.showInstructions ? const InstructionsScreen() : TasksScreen(
-                          tasksList: state.tasksList,
-                        ),
+                        loadSuccess: (state) => state.showInstructions
+                            ? const InstructionsScreen()
+                            : UpdatingScreen(
+                                isUpdateInProgress: state.isUpdateInProgress,
+                                child: TasksScreen(
+                                  tasksList: state.tasksList,
+                                ),
+                              ),
                       );
                     },
                   ),
