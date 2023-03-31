@@ -882,8 +882,8 @@ mixin _$TasksState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)
+    required TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) =>
@@ -891,8 +891,8 @@ mixin _$TasksState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult? Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) =>
@@ -900,8 +900,8 @@ mixin _$TasksState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
@@ -979,8 +979,8 @@ class _$TasksLoadInProgress implements TasksLoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)
+    required TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
@@ -991,8 +991,8 @@ class _$TasksLoadInProgress implements TasksLoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult? Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
@@ -1003,8 +1003,8 @@ class _$TasksLoadInProgress implements TasksLoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
@@ -1062,9 +1062,9 @@ abstract class _$$TasksLoadSuccessCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Task> tasksList,
-      bool showInstructions,
       bool isUpdateInProgress,
-      Object? updatingError});
+      Object? updatingError,
+      bool areCompletedTasksShown});
 }
 
 /// @nodoc
@@ -1079,25 +1079,25 @@ class __$$TasksLoadSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tasksList = null,
-    Object? showInstructions = null,
     Object? isUpdateInProgress = null,
     Object? updatingError = freezed,
+    Object? areCompletedTasksShown = null,
   }) {
     return _then(_$TasksLoadSuccess(
       tasksList: null == tasksList
           ? _value._tasksList
           : tasksList // ignore: cast_nullable_to_non_nullable
               as List<Task>,
-      showInstructions: null == showInstructions
-          ? _value.showInstructions
-          : showInstructions // ignore: cast_nullable_to_non_nullable
-              as bool,
       isUpdateInProgress: null == isUpdateInProgress
           ? _value.isUpdateInProgress
           : isUpdateInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
       updatingError:
           freezed == updatingError ? _value.updatingError : updatingError,
+      areCompletedTasksShown: null == areCompletedTasksShown
+          ? _value.areCompletedTasksShown
+          : areCompletedTasksShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1107,9 +1107,9 @@ class __$$TasksLoadSuccessCopyWithImpl<$Res>
 class _$TasksLoadSuccess implements TasksLoadSuccess {
   const _$TasksLoadSuccess(
       {required final List<Task> tasksList,
-      required this.showInstructions,
       this.isUpdateInProgress = false,
-      this.updatingError})
+      this.updatingError,
+      this.areCompletedTasksShown = true})
       : _tasksList = tasksList;
 
   final List<Task> _tasksList;
@@ -1121,16 +1121,17 @@ class _$TasksLoadSuccess implements TasksLoadSuccess {
   }
 
   @override
-  final bool showInstructions;
-  @override
   @JsonKey()
   final bool isUpdateInProgress;
   @override
   final Object? updatingError;
+  @override
+  @JsonKey()
+  final bool areCompletedTasksShown;
 
   @override
   String toString() {
-    return 'TasksState.loadSuccess(tasksList: $tasksList, showInstructions: $showInstructions, isUpdateInProgress: $isUpdateInProgress, updatingError: $updatingError)';
+    return 'TasksState.loadSuccess(tasksList: $tasksList, isUpdateInProgress: $isUpdateInProgress, updatingError: $updatingError, areCompletedTasksShown: $areCompletedTasksShown)';
   }
 
   @JsonKey(ignore: true)
@@ -1143,41 +1144,41 @@ class _$TasksLoadSuccess implements TasksLoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)
+    required TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
     return loadSuccess(
-        tasksList, showInstructions, isUpdateInProgress, updatingError);
+        tasksList, isUpdateInProgress, updatingError, areCompletedTasksShown);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult? Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
     return loadSuccess?.call(
-        tasksList, showInstructions, isUpdateInProgress, updatingError);
+        tasksList, isUpdateInProgress, updatingError, areCompletedTasksShown);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
       return loadSuccess(
-          tasksList, showInstructions, isUpdateInProgress, updatingError);
+          tasksList, isUpdateInProgress, updatingError, areCompletedTasksShown);
     }
     return orElse();
   }
@@ -1220,14 +1221,14 @@ class _$TasksLoadSuccess implements TasksLoadSuccess {
 abstract class TasksLoadSuccess implements TasksState {
   const factory TasksLoadSuccess(
       {required final List<Task> tasksList,
-      required final bool showInstructions,
       final bool isUpdateInProgress,
-      final Object? updatingError}) = _$TasksLoadSuccess;
+      final Object? updatingError,
+      final bool areCompletedTasksShown}) = _$TasksLoadSuccess;
 
   List<Task> get tasksList;
-  bool get showInstructions;
   bool get isUpdateInProgress;
   Object? get updatingError;
+  bool get areCompletedTasksShown;
   @JsonKey(ignore: true)
   _$$TasksLoadSuccessCopyWith<_$TasksLoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1284,8 +1285,8 @@ class _$TasksLoadFailure implements TasksLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)
+    required TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)
         loadSuccess,
     required TResult Function(Object loadError) loadFailure,
   }) {
@@ -1296,8 +1297,8 @@ class _$TasksLoadFailure implements TasksLoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult? Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult? Function(Object loadError)? loadFailure,
   }) {
@@ -1308,8 +1309,8 @@ class _$TasksLoadFailure implements TasksLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasksList, bool showInstructions,
-            bool isUpdateInProgress, Object? updatingError)?
+    TResult Function(List<Task> tasksList, bool isUpdateInProgress,
+            Object? updatingError, bool areCompletedTasksShown)?
         loadSuccess,
     TResult Function(Object loadError)? loadFailure,
     required TResult orElse(),

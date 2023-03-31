@@ -11,10 +11,12 @@ part 'tasks_bloc.freezed.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final ITasksRepository tasksRepository;
+  var _tasksList = <Task>[];
   TasksBloc(this.tasksRepository) : super(const TasksLoadInProgress()) {
     on<_PageOpened>(_onPageOpened);
     on<_TaskAdded>(_onTaskAdded);
     on<_TaskStatusChanged>(_onTaskStatusChanged);
+    on<_ShowCompletedTasksStatusChanged>(_onShowCompletedTasksStatusChanged);
   }
 
   Future<void> _onPageOpened(
@@ -22,11 +24,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     Emitter<TasksState> emit,
   ) async {
     try {
-      final tasks = await tasksRepository.getTasksList();
+      _tasksList = await tasksRepository.getTasksList();
       emit(
         TasksState.loadSuccess(
-          tasksList: tasks,
-          showInstructions: tasks.isEmpty ? true : false,
+          tasksList: _tasksList,
         ),
       );
     } catch (error, stackTrace) {
@@ -58,11 +59,11 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           isDone: false,
         );
         await tasksRepository.addTask(task);
-        final updatedTasksList = await tasksRepository.getTasksList();
+        _tasksList = await tasksRepository.getTasksList();
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
-            tasksList: updatedTasksList,
+            tasksList: _tasksList,
           ),
         );
       } catch (error, stackTrace) {
@@ -97,15 +98,13 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           ),
         );
         await tasksRepository.changeStatus(id: event.id, isDone: event.isDone);
-        final updatedList = [...currentState.tasksList];
-        final taskIndex =
-            updatedList.indexWhere((task) => task.id == event.id);
-        updatedList[taskIndex] =
-            updatedList[taskIndex].copyWith(isDone: event.isDone);
+        final taskIndex = _tasksList.indexWhere((task) => task.id == event.id);
+        _tasksList[taskIndex] =
+            _tasksList[taskIndex].copyWith(isDone: event.isDone);
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
-            tasksList: updatedList,
+            tasksList: _tasksList,
           ),
         );
       } catch (error, stackTrace) {
@@ -124,6 +123,24 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           currentState.copyWith(updatingError: null),
         );
       }
+    }
+  }
+
+  Future<void> _onShowCompletedTasksStatusChanged(
+    _ShowCompletedTasksStatusChanged event,
+    Emitter<TasksState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is TasksLoadSuccess) {
+      final tasksList = event.showCompletedTasks
+          ? _tasksList
+          : _tasksList.where((element) => !element.isDone).toList();
+      emit(
+        currentState.copyWith(
+          tasksList: tasksList,
+          areCompletedTasksShown: event.showCompletedTasks,
+        ),
+      );
     }
   }
 }

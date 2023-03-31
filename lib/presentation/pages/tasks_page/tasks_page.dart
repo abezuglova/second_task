@@ -36,12 +36,26 @@ class TasksPage extends StatelessWidget {
                         'My tasks',
                         style: textTheme.headlineLarge,
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Hide completed',
-                          style: textTheme.labelLarge,
-                        ),
+                      BlocBuilder<TasksBloc, TasksState>(
+                        builder: (context, state) => state.hasCompletedTasks
+                            ? TextButton(
+                                onPressed: () {
+                                  context.read<TasksBloc>().add(
+                                        TasksEvent
+                                            .showCompletedTasksStatusChanged(
+                                          showCompletedTasks: !state
+                                              .shouldHideButtonBeDisplayed,
+                                        ),
+                                      );
+                                },
+                                child: Text(
+                                  state.shouldHideButtonBeDisplayed
+                                      ? 'Hide completed'
+                                      : 'Show completed',
+                                  style: textTheme.labelLarge,
+                                ),
+                              )
+                            : const SizedBox(),
                       ),
                     ],
                   ),
@@ -68,7 +82,7 @@ class TasksPage extends StatelessWidget {
                       return state.map(
                         loadInProgress: (state) => const LoadingScreen(),
                         loadFailure: (state) => const ErrorScreen(),
-                        loadSuccess: (state) => state.showInstructions
+                        loadSuccess: (state) => state.tasksList.isEmpty
                             ? const InstructionsScreen()
                             : UpdatingScreen(
                                 isUpdateInProgress: state.isUpdateInProgress,

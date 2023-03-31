@@ -5,11 +5,25 @@ class TasksState with _$TasksState {
   const factory TasksState.loadInProgress() = TasksLoadInProgress;
   const factory TasksState.loadSuccess({
     required List<Task> tasksList,
-    required bool showInstructions,
     @Default(false) bool isUpdateInProgress,
     Object? updatingError,
+    @Default(true) bool areCompletedTasksShown,
   }) = TasksLoadSuccess;
   const factory TasksState.loadFailure({
     required Object loadError,
   }) = TasksLoadFailure;
+}
+
+extension TasksStateX on TasksState {
+  bool get hasCompletedTasks => this is TasksLoadSuccess
+      ? (this as TasksLoadSuccess)
+              .tasksList
+              .where((task) => task.isDone)
+              .isNotEmpty ||
+          !(this as TasksLoadSuccess).areCompletedTasksShown
+      : false;
+
+  bool get shouldHideButtonBeDisplayed => this is TasksLoadSuccess
+      ? (this as TasksLoadSuccess).areCompletedTasksShown
+      : false;
 }
