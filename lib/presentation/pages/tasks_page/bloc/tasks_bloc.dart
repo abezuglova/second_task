@@ -97,11 +97,15 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           ),
         );
         await tasksRepository.changeStatus(id: event.id, isDone: event.isDone);
-        final updatedTasksList = await tasksRepository.getTasksList();
+        final updatedList = [...currentState.tasksList];
+        final taskIndex =
+            updatedList.indexWhere((task) => task.id == event.id);
+        updatedList[taskIndex] =
+            updatedList[taskIndex].copyWith(isDone: event.isDone);
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
-            tasksList: updatedTasksList,
+            tasksList: updatedList,
           ),
         );
       } catch (error, stackTrace) {
