@@ -16,13 +16,13 @@ class TasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      body: BlocProvider<TasksBloc>(
-        create: (context) => TasksBloc(context.read())
-          ..add(
-            const TasksEvent.pageOpened(),
-          ),
-        child: Stack(
+    return BlocProvider<TasksBloc>(
+      create: (context) => TasksBloc(context.read())
+        ..add(
+          const TasksEvent.pageOpened(),
+        ),
+      child: Scaffold(
+        body: Stack(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,14 +97,24 @@ class TasksPage extends StatelessWidget {
               ],
             ),
             Positioned(
-                bottom: 20.h,
-                left: 20.w,
-                right: 20.w,
-                child: const FloatingButtonsWidget()),
+              bottom: 20.h,
+              left: 20.w,
+              right: 20.w,
+              child: const FloatingButtonsWidget(),
+            ),
           ],
         ),
+        bottomNavigationBar: BlocBuilder<TasksBloc, TasksState>(
+          builder: (context, state) {
+            return BottomTapBarWidget(
+              sortType: state.maybeMap(
+                loadSuccess: (state) => state.sortType,
+                orElse: () => null,
+              ),
+            );
+          },
+        ),
       ),
-      bottomNavigationBar: const BottomTapBarWidget(),
     );
   }
 }

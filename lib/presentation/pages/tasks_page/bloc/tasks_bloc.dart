@@ -10,6 +10,7 @@ part 'tasks_state.dart';
 part 'tasks_bloc.freezed.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
+  static const defaultSort = TasksSortType.alphaSort;
   final ITasksRepository tasksRepository;
   var _tasksList = <Task>[];
   TasksBloc(this.tasksRepository) : super(const TasksLoadInProgress()) {
@@ -17,6 +18,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     on<_TaskAdded>(_onTaskAdded);
     on<_TaskStatusChanged>(_onTaskStatusChanged);
     on<_ShowCompletedTasksStatusChanged>(_onShowCompletedTasksStatusChanged);
+    on<_TasksSortTypeChanged>(_onTasksSortTypeChanged);
   }
 
   Future<void> _onPageOpened(
@@ -27,7 +29,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       _tasksList = await tasksRepository.getTasksList();
       emit(
         TasksState.loadSuccess(
-          tasksList: _tasksList,
+          tasksList: defaultSort.sort(_tasksList),
         ),
       );
     } catch (error, stackTrace) {
@@ -63,7 +65,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
-            tasksList: _tasksList,
+            tasksList: currentState.sortType.sort(_tasksList),
           ),
         );
       } catch (error, stackTrace) {
@@ -104,7 +106,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
-            tasksList: _tasksList,
+            tasksList: currentState.sortType.sort(_tasksList),
           ),
         );
       } catch (error, stackTrace) {
@@ -137,8 +139,23 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           : _tasksList.where((element) => !element.isDone).toList();
       emit(
         currentState.copyWith(
-          tasksList: tasksList,
+          tasksList: currentState.sortType.sort(tasksList),
           areCompletedTasksShown: event.showCompletedTasks,
+        ),
+      );
+    }
+  }
+
+  Future<void> _onTasksSortTypeChanged(
+    _TasksSortTypeChanged event,
+    Emitter<TasksState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is TasksLoadSuccess) {
+      emit(
+        currentState.copyWith(
+          tasksList: event.sortType.sort(_tasksList),
+          sortType: event.sortType,
         ),
       );
     }

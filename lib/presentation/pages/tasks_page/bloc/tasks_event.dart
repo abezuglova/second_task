@@ -24,3 +24,35 @@ enum TasksSortType {
   alphaReversedSort,
   timeSort,
 }
+
+extension TasksSortTypeX on TasksSortType {
+  List<Task> sort(List<Task> tasksList) {
+    tasksList = [...tasksList];
+    switch (this) {
+      case TasksSortType.alphaSort:
+        return (tasksList
+              ..sort(
+                (task1, task2) => task1.name.toLowerCase().compareTo(
+                      task2.name.toLowerCase(),
+                    ),
+              ))
+            .toList();
+      case TasksSortType.alphaReversedSort:
+        return (tasksList
+              ..sort(
+                (task1, task2) => task2.name.toLowerCase().compareTo(
+                      task1.name.toLowerCase(),
+                    ),
+              ))
+            .toList();
+      case TasksSortType.timeSort:
+        return (tasksList
+              ..sort(
+                (task1, task2) => task1.termDateTime.compareTo(
+                  task2.termDateTime,
+                ),
+              ))
+            .toList();
+    }
+  }
+}

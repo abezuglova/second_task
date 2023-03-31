@@ -8,6 +8,7 @@ class TasksState with _$TasksState {
     @Default(false) bool isUpdateInProgress,
     Object? updatingError,
     @Default(true) bool areCompletedTasksShown,
+    @Default(TasksBloc.defaultSort) TasksSortType sortType,
   }) = TasksLoadSuccess;
   const factory TasksState.loadFailure({
     required Object loadError,

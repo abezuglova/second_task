@@ -11,7 +11,7 @@ class MockTasksRepository implements ITasksRepository {
     ),
     Task(
       id: 1,
-      name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      name: 'Ipsum dolor sit amet, consectetur adipiscing elit',
       termDateTime: DateTime.now(),
       isDone: true,
     ),
@@ -19,20 +19,20 @@ class MockTasksRepository implements ITasksRepository {
 
   @override
   Future<void> addTask(Task task) async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     _tasksList.add(task.copyWith(id: _tasksList.length));
   }
 
   @override
   Future<void> changeStatus({required int id, required bool isDone}) async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     final taskIndex = _tasksList.indexWhere((task) => task.id == id);
     _tasksList[taskIndex] = _tasksList[taskIndex].copyWith(isDone: isDone);
   }
 
   @override
   Future<List<Task>> getTasksList() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     return [..._tasksList];
   }
 }

@@ -194,6 +194,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                     date.day,
                                     time.hour,
                                     time.minute,
+                                    time.second,
                                   ),
                                 ),
                               );
