@@ -20,7 +20,7 @@ class TaskWidget extends StatelessWidget {
       children: [
         CustomCheckboxWidget(
           value: task.isDone,
-          onChanged: (_) => onStatusChanged(task.isDone),
+          onChanged: onStatusChanged,
         ),
         SizedBox(width: 13.w),
         Expanded(

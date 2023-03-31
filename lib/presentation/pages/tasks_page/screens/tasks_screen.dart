@@ -24,7 +24,14 @@ class TasksScreen extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(27.w, 41.h, 14.w, 0),
           itemBuilder: (BuildContext context, int index) => TaskWidget(
                 task: tasksList[index],
-                onStatusChanged: (bool value) {},
+                onStatusChanged: (bool value) {
+                  context.read<TasksBloc>().add(
+                        TasksEvent.taskStatusChanged(
+                          isDone: value,
+                          id: tasksList[index].id,
+                        ),
+                      );
+                },
               ),
           separatorBuilder: (context, index) => SizedBox(height: 20.h),
           itemCount: tasksList.length),

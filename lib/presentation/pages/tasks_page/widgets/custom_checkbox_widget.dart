@@ -6,7 +6,7 @@ import 'package:second_task/presentation/assets/app_images.dart';
 
 class CustomCheckboxWidget extends StatelessWidget {
   final bool value;
-  final ValueChanged onChanged;
+  final ValueChanged<bool> onChanged;
   const CustomCheckboxWidget({
     super.key,
     required this.value,
@@ -20,7 +20,9 @@ class CustomCheckboxWidget extends StatelessWidget {
       color: value ? Colors.black : Colors.white,
       borderRadius: borderRadius,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onChanged(!value);
+        },
         borderRadius: borderRadius,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 3.h),

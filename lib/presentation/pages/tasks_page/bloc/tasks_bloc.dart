@@ -14,6 +14,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   TasksBloc(this.tasksRepository) : super(const TasksLoadInProgress()) {
     on<_PageOpened>(_onPageOpened);
     on<_TaskAdded>(_onTaskAdded);
+    on<_TaskStatusChanged>(_onTaskStatusChanged);
   }
 
   Future<void> _onPageOpened(
@@ -67,6 +68,45 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       } catch (error, stackTrace) {
         log(
           'Error during task adding',
+          error: error,
+          stackTrace: stackTrace,
+        );
+        emit(
+          currentState.copyWith(
+            isUpdateInProgress: false,
+            updatingError: error,
+          ),
+        );
+        emit(
+          currentState.copyWith(updatingError: null),
+        );
+      }
+    }
+  }
+
+  Future<void> _onTaskStatusChanged(
+    _TaskStatusChanged event,
+    Emitter<TasksState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is TasksLoadSuccess) {
+      try {
+        emit(
+          currentState.copyWith(
+            isUpdateInProgress: true,
+          ),
+        );
+        await tasksRepository.changeStatus(id: event.id, isDone: event.isDone);
+        final updatedTasksList = await tasksRepository.getTasksList();
+        emit(
+          currentState.copyWith(
+            isUpdateInProgress: false,
+            tasksList: updatedTasksList,
+          ),
+        );
+      } catch (error, stackTrace) {
+        log(
+          'Error during task status changing',
           error: error,
           stackTrace: stackTrace,
         );
