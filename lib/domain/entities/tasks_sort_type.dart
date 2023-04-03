@@ -19,11 +19,10 @@ extension TasksSortTypeX on TasksSortType {
     }
   }
 
-  int _alphaSortComparator(Task task1, Task task2) {
+  int _statusComparator(
+      Task task1, Task task2, int Function(Task, Task) compare) {
     if (task1.isCompleted == task2.isCompleted) {
-      return task1.name.toLowerCase().compareTo(
-            task2.name.toLowerCase(),
-          );
+      return compare(task1, task2);
     } else if (task1.isCompleted && !task2.isCompleted) {
       return 1;
     } else {
@@ -31,25 +30,25 @@ extension TasksSortTypeX on TasksSortType {
     }
   }
 
-  int _alphaReversedSortComparator(Task task1, Task task2) {
-    if (task1.isCompleted == task2.isCompleted) {
-      return task2.name.toLowerCase().compareTo(
-            task1.name.toLowerCase(),
-          );
-    } else if (task1.isCompleted && !task2.isCompleted) {
-      return 1;
-    } else {
-      return -1;
-    }
-  }
+  int _alphaSortComparator(Task task1, Task task2) => _statusComparator(
+        task1,
+        task2,
+        (task1, task2) => task1.name.toLowerCase().compareTo(
+              task2.name.toLowerCase(),
+            ),
+      );
 
-  int _timeSortComparator(Task task1, Task task2) {
-    if (task1.isCompleted == task2.isCompleted) {
-      return task1.termDateTime.compareTo(task2.termDateTime);
-    } else if (task1.isCompleted && !task2.isCompleted) {
-      return 1;
-    } else {
-      return -1;
-    }
-  }
+  int _alphaReversedSortComparator(Task task1, Task task2) => _statusComparator(
+        task1,
+        task2,
+        (task1, task2) => task2.name.toLowerCase().compareTo(
+              task1.name.toLowerCase(),
+            ),
+      );
+
+  int _timeSortComparator(Task task1, Task task2) => _statusComparator(
+        task1,
+        task2,
+        (task1, task2) => task1.termDateTime.compareTo(task2.termDateTime),
+      );
 }
