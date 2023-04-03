@@ -7,13 +7,13 @@ class MockTasksRepository implements ITasksRepository {
       id: 0,
       name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       termDateTime: DateTime.now(),
-      isDone: false,
+      isCompleted: false,
     ),
     Task(
       id: 1,
       name: 'Ipsum dolor sit amet, consectetur adipiscing elit',
       termDateTime: DateTime.now(),
-      isDone: true,
+      isCompleted: true,
     ),
   ];
 
@@ -24,10 +24,10 @@ class MockTasksRepository implements ITasksRepository {
   }
 
   @override
-  Future<void> changeStatus({required int id, required bool isDone}) async {
+  Future<void> changeStatus({required int id, required bool isCompleted}) async {
     await Future.delayed(const Duration(milliseconds: 500));
     final taskIndex = _tasksList.indexWhere((task) => task.id == id);
-    _tasksList[taskIndex] = _tasksList[taskIndex].copyWith(isDone: isDone);
+    _tasksList[taskIndex] = _tasksList[taskIndex].copyWith(isCompleted: isCompleted);
   }
 
   @override

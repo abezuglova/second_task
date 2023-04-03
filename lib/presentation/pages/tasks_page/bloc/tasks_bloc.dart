@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:second_task/domain/entities/task.dart';
+import 'package:second_task/domain/entities/tasks_sort_type.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 
 part 'tasks_event.dart';
@@ -58,7 +59,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
           id: -1,
           name: event.taskName,
           termDateTime: event.taskTerm,
-          isDone: false,
+          isCompleted: false,
         );
         await tasksRepository.addTask(task);
         _tasksList = await tasksRepository.getTasksList();
@@ -99,10 +100,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
             isUpdateInProgress: true,
           ),
         );
-        await tasksRepository.changeStatus(id: event.id, isDone: event.isDone);
+        await tasksRepository.changeStatus(id: event.id, isCompleted: event.isDone);
         final taskIndex = _tasksList.indexWhere((task) => task.id == event.id);
         _tasksList[taskIndex] =
-            _tasksList[taskIndex].copyWith(isDone: event.isDone);
+            _tasksList[taskIndex].copyWith(isCompleted: event.isDone);
         emit(
           currentState.copyWith(
             isUpdateInProgress: false,
@@ -136,7 +137,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     if (currentState is TasksLoadSuccess) {
       final tasksList = event.showCompletedTasks
           ? _tasksList
-          : _tasksList.where((element) => !element.isDone).toList();
+          : _tasksList.where((element) => !element.isCompleted).toList();
       emit(
         currentState.copyWith(
           tasksList: currentState.sortType.sort(tasksList),

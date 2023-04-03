@@ -5,6 +5,6 @@ abstract class ITasksRepository {
   Future<List<Task>> getTasksList();
   Future<void> changeStatus({
     required int id,
-    required bool isDone,
+    required bool isCompleted,
   });
 }

@@ -1140,7 +1140,7 @@ class _$TasksLoadSuccess implements TasksLoadSuccess {
       this.isUpdateInProgress = false,
       this.updatingError,
       this.areCompletedTasksShown = true,
-      this.sortType = TasksSortType.alphaSort})
+      this.sortType = TasksBloc.defaultSort})
       : _tasksList = tasksList;
 
   final List<Task> _tasksList;

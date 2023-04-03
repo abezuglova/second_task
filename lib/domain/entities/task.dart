@@ -7,6 +7,6 @@ class Task with _$Task {
     required int id,
     required String name,
     required DateTime termDateTime,
-    required bool isDone,
+    required bool isCompleted,
   }) = _Task;
 }

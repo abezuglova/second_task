@@ -19,27 +19,27 @@ class TaskWidget extends StatelessWidget {
     return Row(
       children: [
         CustomCheckboxWidget(
-          value: task.isDone,
+          value: task.isCompleted,
           onChanged: onStatusChanged,
         ),
         SizedBox(width: 13.w),
         Expanded(
           child: Opacity(
-            opacity: task.isDone ? 0.3 : 1,
+            opacity: task.isCompleted ? 0.3 : 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   task.name,
                   style: textTheme.bodySmall?.copyWith(
-                    decoration: task.isDone ? TextDecoration.lineThrough : null,
+                    decoration: task.isCompleted ? TextDecoration.lineThrough : null,
                   ),
                   maxLines: 10,
                 ),
                 Text(
                   DateFormat('dd.MM.y HH:mm').format(task.termDateTime),
                   style: textTheme.headlineSmall?.copyWith(
-                    decoration: task.isDone ? TextDecoration.lineThrough : null,
+                    decoration: task.isCompleted ? TextDecoration.lineThrough : null,
                   ),
                 ),
               ],

@@ -19,7 +19,7 @@ extension TasksStateX on TasksState {
   bool get hasCompletedTasks => this is TasksLoadSuccess
       ? (this as TasksLoadSuccess)
               .tasksList
-              .where((task) => task.isDone)
+              .where((task) => task.isCompleted)
               .isNotEmpty ||
           !(this as TasksLoadSuccess).areCompletedTasksShown
       : false;

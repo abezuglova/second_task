@@ -19,7 +19,7 @@ mixin _$Task {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get termDateTime => throw _privateConstructorUsedError;
-  bool get isDone => throw _privateConstructorUsedError;
+  bool get isCompleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskCopyWith<Task> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
-  $Res call({int id, String name, DateTime termDateTime, bool isDone});
+  $Res call({int id, String name, DateTime termDateTime, bool isCompleted});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? id = null,
     Object? name = null,
     Object? termDateTime = null,
-    Object? isDone = null,
+    Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -64,9 +64,9 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.termDateTime
           : termDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isDone: null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -78,7 +78,7 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       __$$_TaskCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, DateTime termDateTime, bool isDone});
+  $Res call({int id, String name, DateTime termDateTime, bool isCompleted});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
     Object? id = null,
     Object? name = null,
     Object? termDateTime = null,
-    Object? isDone = null,
+    Object? isCompleted = null,
   }) {
     return _then(_$_Task(
       id: null == id
@@ -108,9 +108,9 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
           ? _value.termDateTime
           : termDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isDone: null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -123,7 +123,7 @@ class _$_Task implements _Task {
       {required this.id,
       required this.name,
       required this.termDateTime,
-      required this.isDone});
+      required this.isCompleted});
 
   @override
   final int id;
@@ -132,11 +132,11 @@ class _$_Task implements _Task {
   @override
   final DateTime termDateTime;
   @override
-  final bool isDone;
+  final bool isCompleted;
 
   @override
   String toString() {
-    return 'Task(id: $id, name: $name, termDateTime: $termDateTime, isDone: $isDone)';
+    return 'Task(id: $id, name: $name, termDateTime: $termDateTime, isCompleted: $isCompleted)';
   }
 
   @override
@@ -148,11 +148,13 @@ class _$_Task implements _Task {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.termDateTime, termDateTime) ||
                 other.termDateTime == termDateTime) &&
-            (identical(other.isDone, isDone) || other.isDone == isDone));
+            (identical(other.isCompleted, isCompleted) ||
+                other.isCompleted == isCompleted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, termDateTime, isDone);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, termDateTime, isCompleted);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +168,7 @@ abstract class _Task implements Task {
       {required final int id,
       required final String name,
       required final DateTime termDateTime,
-      required final bool isDone}) = _$_Task;
+      required final bool isCompleted}) = _$_Task;
 
   @override
   int get id;
@@ -175,7 +177,7 @@ abstract class _Task implements Task {
   @override
   DateTime get termDateTime;
   @override
-  bool get isDone;
+  bool get isCompleted;
   @override
   @JsonKey(ignore: true)
   _$$_TaskCopyWith<_$_Task> get copyWith => throw _privateConstructorUsedError;
