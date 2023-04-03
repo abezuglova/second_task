@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:second_task/presentation/assets/app_strings.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 
 class ErrorScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class ErrorScreen extends StatelessWidget {
           SliverFillRemaining(
             child: Center(
               child: Text(
-                'Ошибка загрузки',
+                AppStrings.loadingError,
                 style: textTheme.bodySmall,
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
+import 'package:second_task/presentation/assets/app_strings.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_appbar_widget.dart';
 
@@ -15,6 +16,9 @@ class AddTaskWidget extends StatefulWidget {
 }
 
 class _AddTaskWidgetState extends State<AddTaskWidget> {
+  static final timeFormat = DateFormat('HH : mm');
+  static final dateFormat = DateFormat('dd.MM.y');
+
   String taskName = '';
   DateTime time = DateTime.now();
   DateTime date = DateTime.now();
@@ -74,7 +78,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 37.h),
                     child: Text(
-                      'Add a task',
+                      AppStrings.addATask,
                       style: textTheme.headlineLarge,
                     ),
                   ),
@@ -82,7 +86,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Name',
+                        AppStrings.name,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 11.h),
@@ -96,7 +100,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                             style: textTheme.bodySmall
                                 ?.copyWith(color: Colors.black),
                             decoration: InputDecoration(
-                              hintText: 'Lorem ipsum dolor sit amet',
+                              hintText: AppStrings.enterText,
                               hintStyle: textTheme.bodySmall,
                               border: textFieldBorderDecoration,
                               focusedBorder: textFieldBorderDecoration,
@@ -114,7 +118,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Time',
+                        AppStrings.time,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 22.h),
@@ -135,7 +139,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                           decoration: decoration,
                           child: Center(
                             child: Text(
-                              DateFormat('HH : mm').format(time),
+                              timeFormat.format(time),
                               style: textTheme.bodyLarge,
                             ),
                           ),
@@ -148,7 +152,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Date',
+                        AppStrings.date,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 24.h),
@@ -169,7 +173,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                           decoration: decoration,
                           child: Center(
                             child: Text(
-                              DateFormat('dd.MM.y').format(date),
+                              dateFormat.format(date),
                               style: textTheme.bodyLarge,
                             ),
                           ),
@@ -201,7 +205,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                               Navigator.of(context).pop();
                             },
                       child: Text(
-                        'Done',
+                        AppStrings.done,
                         style: textTheme.labelSmall,
                       ),
                     ),

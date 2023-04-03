@@ -5,6 +5,7 @@ import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/custom_checkbox_widget.dart';
 
 class TaskWidget extends StatelessWidget {
+  static final dateTimeFormat = DateFormat('dd.MM.y HH:mm');
   final Task task;
   final ValueChanged<bool> onStatusChanged;
   const TaskWidget({
@@ -37,7 +38,7 @@ class TaskWidget extends StatelessWidget {
                   maxLines: 10,
                 ),
                 Text(
-                  DateFormat('dd.MM.y HH:mm').format(task.termDateTime),
+                  dateTimeFormat.format(task.termDateTime),
                   style: textTheme.headlineSmall?.copyWith(
                     decoration: task.isCompleted ? TextDecoration.lineThrough : null,
                   ),

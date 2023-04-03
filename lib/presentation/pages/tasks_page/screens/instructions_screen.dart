@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_images.dart';
+import 'package:second_task/presentation/assets/app_strings.dart';
 
 class InstructionsScreen extends StatelessWidget {
   const InstructionsScreen({super.key});
@@ -17,7 +18,7 @@ class InstructionsScreen extends StatelessWidget {
           SizedBox(
             width: 153.w,
             child: Text(
-              'Looks like there is no tasks yet! Go ahead and push a plus button below',
+              AppStrings.instructionsText,
               style: textTheme.bodySmall,
             ),
           ),

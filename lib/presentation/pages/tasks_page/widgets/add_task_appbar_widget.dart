@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
 import 'package:second_task/presentation/assets/app_images.dart';
+import 'package:second_task/presentation/assets/app_strings.dart';
 
 class AddTaskAppBarWidget extends StatelessWidget {
   const AddTaskAppBarWidget({super.key});
@@ -25,7 +26,7 @@ class AddTaskAppBarWidget extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Task',
+              AppStrings.task,
               style: textTheme.labelMedium,
             ),
           ),
@@ -42,7 +43,7 @@ class AddTaskAppBarWidget extends StatelessWidget {
                 SvgPicture.asset(AppImages.chevronLeftIcon),
                 SizedBox(width: 5.w),
                 Text(
-                  'Close',
+                  AppStrings.close,
                   style: textTheme.bodyMedium,
                 ),
               ],

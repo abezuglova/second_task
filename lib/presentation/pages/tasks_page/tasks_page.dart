@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:second_task/domain/entities/tasks_sort_type.dart';
+import 'package:second_task/presentation/assets/app_strings.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/error_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/loading_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/tasks_screen.dart';
-import 'package:second_task/presentation/pages/tasks_page/screens/updating_screen.dart';
+import 'package:second_task/presentation/pages/tasks_page/screens/updating_screen_wrapper.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/floating_buttons_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class TasksPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'My tasks',
+                        AppStrings.myTasks,
                         style: textTheme.headlineLarge,
                       ),
                       BlocBuilder<TasksBloc, TasksState>(
@@ -49,8 +50,8 @@ class TasksPage extends StatelessWidget {
                                     ),
                                 child: Text(
                                   state.shouldHideButtonBeDisplayed
-                                      ? 'Hide completed'
-                                      : 'Show completed',
+                                      ? AppStrings.hideCompleted
+                                      : AppStrings.showCompleted,
                                   style: textTheme.labelLarge,
                                 ),
                               )
@@ -70,7 +71,7 @@ class TasksPage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 16.h),
                           child: Text(
-                            'Ошибка обновления данных',
+                            AppStrings.dataUpdateError,
                             style: textTheme.bodySmall,
                             textAlign: TextAlign.center,
                           ),
@@ -82,7 +83,7 @@ class TasksPage extends StatelessWidget {
                       loadFailure: (state) => const ErrorScreen(),
                       loadSuccess: (state) => state.tasksList.isEmpty
                           ? const InstructionsScreen()
-                          : UpdatingScreen(
+                          : UpdatingScreenWrapper(
                               isUpdateInProgress: state.isUpdateInProgress,
                               child: TasksScreen(
                                 tasksList: state.tasksList,

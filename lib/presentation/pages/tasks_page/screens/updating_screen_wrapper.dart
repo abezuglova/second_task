@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class UpdatingScreen extends StatelessWidget {
+class UpdatingScreenWrapper extends StatelessWidget {
   final Widget child;
   final bool isUpdateInProgress;
-  const UpdatingScreen({
+  const UpdatingScreenWrapper({
     required this.child,
     required this.isUpdateInProgress,
     Key? key,
