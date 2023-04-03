@@ -1,4 +1,4 @@
-class AppImages {
+abstract class AppImages {
   static const infoIcon = 'images/info_icon.svg';
   static const addIcon = 'images/add_icon.svg';
   static const alphaSortIcon = 'images/alpha_sort_icon.svg';

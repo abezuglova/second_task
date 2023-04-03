@@ -37,17 +37,18 @@ class TasksPage extends StatelessWidget {
                         style: textTheme.headlineLarge,
                       ),
                       BlocBuilder<TasksBloc, TasksState>(
+                        buildWhen: (previous, current) =>
+                            previous.hasCompletedTasks !=
+                            current.hasCompletedTasks,
                         builder: (context, state) => state.hasCompletedTasks
                             ? TextButton(
-                                onPressed: () {
-                                  context.read<TasksBloc>().add(
-                                        TasksEvent
-                                            .showCompletedTasksStatusChanged(
-                                          showCompletedTasks: !state
-                                              .shouldHideButtonBeDisplayed,
-                                        ),
-                                      );
-                                },
+                                onPressed: () => context.read<TasksBloc>().add(
+                                      TasksEvent
+                                          .showCompletedTasksStatusChanged(
+                                        showCompletedTasks:
+                                            !state.shouldHideButtonBeDisplayed,
+                                      ),
+                                    ),
                                 child: Text(
                                   state.shouldHideButtonBeDisplayed
                                       ? 'Hide completed'
@@ -78,20 +79,18 @@ class TasksPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    builder: (context, state) {
-                      return state.map(
-                        loadInProgress: (state) => const LoadingScreen(),
-                        loadFailure: (state) => const ErrorScreen(),
-                        loadSuccess: (state) => state.tasksList.isEmpty
-                            ? const InstructionsScreen()
-                            : UpdatingScreen(
-                                isUpdateInProgress: state.isUpdateInProgress,
-                                child: TasksScreen(
-                                  tasksList: state.tasksList,
-                                ),
+                    builder: (context, state) => state.map(
+                      loadInProgress: (state) => const LoadingScreen(),
+                      loadFailure: (state) => const ErrorScreen(),
+                      loadSuccess: (state) => state.tasksList.isEmpty
+                          ? const InstructionsScreen()
+                          : UpdatingScreen(
+                              isUpdateInProgress: state.isUpdateInProgress,
+                              child: TasksScreen(
+                                tasksList: state.tasksList,
                               ),
-                      );
-                    },
+                            ),
+                    ),
                   ),
                 ),
               ],
@@ -105,14 +104,11 @@ class TasksPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BlocBuilder<TasksBloc, TasksState>(
-          builder: (context, state) {
-            return BottomTapBarWidget(
-              sortType: state.maybeMap(
-                loadSuccess: (state) => state.sortType,
-                orElse: () => null,
-              ),
-            );
-          },
+          buildWhen: (previous, current) =>
+              current.appliedSortType != previous.appliedSortType,
+          builder: (context, state) => BottomTapBarWidget(
+            sortType: state.appliedSortType,
+          ),
         ),
       ),
     );

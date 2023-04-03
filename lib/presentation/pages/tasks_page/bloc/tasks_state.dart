@@ -27,4 +27,9 @@ extension TasksStateX on TasksState {
         loadSuccess: (state) => state.areCompletedTasksShown,
         orElse: () => false,
       );
+
+  TasksSortType? get appliedSortType => maybeMap(
+        loadSuccess: (state) => state.sortType,
+        orElse: () => null,
+      );
 }

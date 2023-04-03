@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
+abstract class AppColors {
   static const bottomTapBarColor = Color(0xFFF9F9F9);
   static const mainTextColor = Color(0xFF737373);
   static const textButtonColor = Color(0xFF3478F6);
