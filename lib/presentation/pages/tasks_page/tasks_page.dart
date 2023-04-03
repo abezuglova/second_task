@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:second_task/domain/entities/tasks_sort_type.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/error_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
@@ -37,9 +38,6 @@ class TasksPage extends StatelessWidget {
                         style: textTheme.headlineLarge,
                       ),
                       BlocBuilder<TasksBloc, TasksState>(
-                        buildWhen: (previous, current) =>
-                            previous.hasCompletedTasks !=
-                            current.hasCompletedTasks,
                         builder: (context, state) => state.hasCompletedTasks
                             ? TextButton(
                                 onPressed: () => context.read<TasksBloc>().add(
@@ -103,11 +101,11 @@ class TasksPage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BlocBuilder<TasksBloc, TasksState>(
-          buildWhen: (previous, current) =>
-              current.appliedSortType != previous.appliedSortType,
-          builder: (context, state) => BottomTapBarWidget(
-            sortType: state.appliedSortType,
+        bottomNavigationBar:
+            BlocSelector<TasksBloc, TasksState, TasksSortType?>(
+          selector: (state) => state.appliedSortType,
+          builder: (context, sortType) => BottomTapBarWidget(
+            sortType: sortType,
           ),
         ),
       ),
