@@ -16,15 +16,15 @@ class TasksState with _$TasksState {
 }
 
 extension TasksStateX on TasksState {
-  bool get hasCompletedTasks => this is TasksLoadSuccess
-      ? (this as TasksLoadSuccess)
-              .tasksList
-              .where((task) => task.isCompleted)
-              .isNotEmpty ||
-          !(this as TasksLoadSuccess).areCompletedTasksShown
-      : false;
+  bool get hasCompletedTasks => maybeMap(
+        loadSuccess: (state) =>
+            state.tasksList.where((task) => task.isCompleted).isNotEmpty ||
+            !state.areCompletedTasksShown,
+        orElse: () => false,
+      );
 
-  bool get shouldHideButtonBeDisplayed => this is TasksLoadSuccess
-      ? (this as TasksLoadSuccess).areCompletedTasksShown
-      : false;
+  bool get shouldHideButtonBeDisplayed => maybeMap(
+        loadSuccess: (state) => state.areCompletedTasksShown,
+        orElse: () => false,
+      );
 }
