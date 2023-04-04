@@ -4,15 +4,10 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
+import 'package:second_task/data/datasource/local/tables/tasks_table.dart';
+import 'package:second_task/domain/entities/task.dart';
 
 part 'tasks_database.g.dart';
-
-class TasksTable extends Table {
-  IntColumn get id => integer().autoIncrement()();
-  TextColumn get name => text()();
-  BoolColumn get isCompleted => boolean()();
-  DateTimeColumn get termDateTime => dateTime()();
-}
 
 @DriftDatabase(tables: [TasksTable])
 class TasksDatabase extends _$TasksDatabase {
@@ -21,6 +16,40 @@ class TasksDatabase extends _$TasksDatabase {
   @override
   int get schemaVersion => 1;
 
+  Future<void> addTask(Task task) async =>
+      await into(tasksTable).insert(
+            TasksTableCompanion.insert(
+              name: task.name,
+              isCompleted: task.isCompleted,
+              termDateTime: task.termDateTime,
+            ),
+          );
+
+  Future<void> changeStatus({
+    required int id,
+    required bool isCompleted,
+  }) async =>
+      await (update(tasksTable)
+            ..where(
+              (task) => task.id.equals(id),
+            ))
+          .write(
+        TasksTableCompanion(
+          isCompleted: Value(isCompleted),
+        ),
+      );
+
+  Future<List<Task>> getTasksList() async =>
+      (await select(tasksTable).get())
+          .map(
+            (task) => Task(
+              id: task.id,
+              name: task.name,
+              termDateTime: task.termDateTime,
+              isCompleted: task.isCompleted,
+            ),
+          )
+          .toList();
 }
 
 LazyDatabase _openConnection() {
