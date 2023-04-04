@@ -56,7 +56,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
               ),
             );
             final task = Task(
-              id: -1,
+              id: '-1',
               name: event.taskName,
               termDateTime: event.taskTerm,
               isCompleted: false,

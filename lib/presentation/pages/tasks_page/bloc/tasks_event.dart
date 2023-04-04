@@ -9,7 +9,7 @@ class TasksEvent with _$TasksEvent {
   }) = _TaskAdded;
   const factory TasksEvent.taskStatusChanged({
     required bool isDone,
-    required int id,
+    required String id,
   }) = _TaskStatusChanged;
   const factory TasksEvent.showCompletedTasksStatusChanged({
     required bool showCompletedTasks,

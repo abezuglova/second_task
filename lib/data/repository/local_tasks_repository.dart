@@ -10,7 +10,7 @@ class LocalTasksRepository implements ITasksRepository {
 
   @override
   Future<void> changeStatus({
-    required int id,
+    required String id,
     required bool isCompleted,
   }) async =>
       await tasksDatabase.changeStatus(

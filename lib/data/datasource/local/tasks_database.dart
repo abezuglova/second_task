@@ -16,22 +16,23 @@ class TasksDatabase extends _$TasksDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<void> addTask(Task task) async =>
-      await into(tasksTable).insert(
-            TasksTableCompanion.insert(
-              name: task.name,
-              isCompleted: task.isCompleted,
-              termDateTime: task.termDateTime,
-            ),
-          );
+  Future<void> addTask(Task task) async => await into(tasksTable).insert(
+        TasksTableCompanion.insert(
+          name: task.name,
+          isCompleted: task.isCompleted,
+          termDateTime: task.termDateTime,
+        ),
+      );
 
   Future<void> changeStatus({
-    required int id,
+    required String id,
     required bool isCompleted,
   }) async =>
       await (update(tasksTable)
             ..where(
-              (task) => task.id.equals(id),
+              (task) => task.id.equals(
+                int.parse(id),
+              ),
             ))
           .write(
         TasksTableCompanion(
@@ -39,17 +40,16 @@ class TasksDatabase extends _$TasksDatabase {
         ),
       );
 
-  Future<List<Task>> getTasksList() async =>
-      (await select(tasksTable).get())
-          .map(
-            (task) => Task(
-              id: task.id,
-              name: task.name,
-              termDateTime: task.termDateTime,
-              isCompleted: task.isCompleted,
-            ),
-          )
-          .toList();
+  Future<List<Task>> getTasksList() async => (await select(tasksTable).get())
+      .map(
+        (task) => Task(
+          id: task.id.toString(),
+          name: task.name,
+          termDateTime: task.termDateTime,
+          isCompleted: task.isCompleted,
+        ),
+      )
+      .toList();
 }
 
 LazyDatabase _openConnection() {

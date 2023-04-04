@@ -20,7 +20,7 @@ mixin _$TasksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -30,7 +30,7 @@ mixin _$TasksEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) =>
@@ -39,7 +39,7 @@ mixin _$TasksEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),
@@ -136,7 +136,7 @@ class _$_PageOpened implements _PageOpened {
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -149,7 +149,7 @@ class _$_PageOpened implements _PageOpened {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) {
@@ -161,7 +161,7 @@ class _$_PageOpened implements _PageOpened {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),
@@ -296,7 +296,7 @@ class _$_TaskAdded implements _TaskAdded {
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -309,7 +309,7 @@ class _$_TaskAdded implements _TaskAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) {
@@ -321,7 +321,7 @@ class _$_TaskAdded implements _TaskAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),
@@ -394,7 +394,7 @@ abstract class _$$_TaskStatusChangedCopyWith<$Res> {
           $Res Function(_$_TaskStatusChanged) then) =
       __$$_TaskStatusChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool isDone, int id});
+  $Res call({bool isDone, String id});
 }
 
 /// @nodoc
@@ -419,7 +419,7 @@ class __$$_TaskStatusChangedCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -432,7 +432,7 @@ class _$_TaskStatusChanged implements _TaskStatusChanged {
   @override
   final bool isDone;
   @override
-  final int id;
+  final String id;
 
   @override
   String toString() {
@@ -463,7 +463,7 @@ class _$_TaskStatusChanged implements _TaskStatusChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -476,7 +476,7 @@ class _$_TaskStatusChanged implements _TaskStatusChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) {
@@ -488,7 +488,7 @@ class _$_TaskStatusChanged implements _TaskStatusChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),
@@ -546,10 +546,10 @@ class _$_TaskStatusChanged implements _TaskStatusChanged {
 abstract class _TaskStatusChanged implements TasksEvent {
   const factory _TaskStatusChanged(
       {required final bool isDone,
-      required final int id}) = _$_TaskStatusChanged;
+      required final String id}) = _$_TaskStatusChanged;
 
   bool get isDone;
-  int get id;
+  String get id;
   @JsonKey(ignore: true)
   _$$_TaskStatusChangedCopyWith<_$_TaskStatusChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -627,7 +627,7 @@ class _$_ShowCompletedTasksStatusChanged
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -640,7 +640,7 @@ class _$_ShowCompletedTasksStatusChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) {
@@ -652,7 +652,7 @@ class _$_ShowCompletedTasksStatusChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),
@@ -787,7 +787,7 @@ class _$_TasksSortTypeChanged implements _TasksSortTypeChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() pageOpened,
     required TResult Function(String taskName, DateTime taskTerm) taskAdded,
-    required TResult Function(bool isDone, int id) taskStatusChanged,
+    required TResult Function(bool isDone, String id) taskStatusChanged,
     required TResult Function(bool showCompletedTasks)
         showCompletedTasksStatusChanged,
     required TResult Function(TasksSortType sortType) tasksSortTypeChanged,
@@ -800,7 +800,7 @@ class _$_TasksSortTypeChanged implements _TasksSortTypeChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? pageOpened,
     TResult? Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult? Function(bool isDone, int id)? taskStatusChanged,
+    TResult? Function(bool isDone, String id)? taskStatusChanged,
     TResult? Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult? Function(TasksSortType sortType)? tasksSortTypeChanged,
   }) {
@@ -812,7 +812,7 @@ class _$_TasksSortTypeChanged implements _TasksSortTypeChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? pageOpened,
     TResult Function(String taskName, DateTime taskTerm)? taskAdded,
-    TResult Function(bool isDone, int id)? taskStatusChanged,
+    TResult Function(bool isDone, String id)? taskStatusChanged,
     TResult Function(bool showCompletedTasks)? showCompletedTasksStatusChanged,
     TResult Function(TasksSortType sortType)? tasksSortTypeChanged,
     required TResult orElse(),

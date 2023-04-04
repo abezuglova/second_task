@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Task {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get termDateTime => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
-  $Res call({int id, String name, DateTime termDateTime, bool isCompleted});
+  $Res call({String id, String name, DateTime termDateTime, bool isCompleted});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       __$$_TaskCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, DateTime termDateTime, bool isCompleted});
+  $Res call({String id, String name, DateTime termDateTime, bool isCompleted});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ class _$_Task implements _Task {
       required this.isCompleted});
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -165,13 +165,13 @@ class _$_Task implements _Task {
 
 abstract class _Task implements Task {
   const factory _Task(
-      {required final int id,
+      {required final String id,
       required final String name,
       required final DateTime termDateTime,
       required final bool isCompleted}) = _$_Task;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override
