@@ -7,11 +7,11 @@ import 'package:path/path.dart' as p;
 import 'package:second_task/data/datasource/local/tables/tasks_table.dart';
 import 'package:second_task/domain/entities/task.dart';
 
-part 'tasks_database.g.dart';
+part 'tasks_drift_database.g.dart';
 
 @DriftDatabase(tables: [TasksTable])
-class TasksDatabase extends _$TasksDatabase {
-  TasksDatabase() : super(_openConnection());
+class TasksDriftDatabase extends _$TasksDatabase {
+  TasksDriftDatabase() : super(_openConnection());
 
   @override
   int get schemaVersion => 1;

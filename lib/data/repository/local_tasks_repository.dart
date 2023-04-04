@@ -1,9 +1,9 @@
-import 'package:second_task/data/datasource/local/tasks_database.dart';
+import 'package:second_task/data/datasource/local/tasks_drift_database.dart';
 import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 
 class LocalTasksRepository implements ITasksRepository {
-  final tasksDatabase = TasksDatabase();
+  final tasksDatabase = TasksDriftDatabase();
 
   @override
   Future<void> addTask(Task task) async => await tasksDatabase.addTask(task);

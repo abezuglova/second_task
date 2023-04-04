@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tasks_database.dart';
+part of 'tasks_drift_database.dart';
 
 // ignore_for_file: type=lint
 class $TasksTableTable extends TasksTable

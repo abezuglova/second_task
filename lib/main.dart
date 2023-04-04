@@ -1,14 +1,25 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_task/data/repository/local_tasks_repository.dart';
 import 'package:second_task/data/repository/mock_tasks_repository.dart';
+import 'package:second_task/data/repository/remote_tasks_repository.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
 import 'package:second_task/presentation/navigation/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyBV_J6Zp2A4y8FeFqisyXA57l3k9Wc2w0E',
+      appId: '1:547423171414:android:5cd261415debc0f60d5cf7',
+      messagingSenderId: '547423171414',
+      projectId: 'tasks-99b61',
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -18,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider<ITasksRepository>(
-      create: (context) => LocalTasksRepository(),
+      create: (context) => RemoteTasksRepository(),
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         splitScreenMode: true,
