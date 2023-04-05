@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:second_task/presentation/assets/app_strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
@@ -8,6 +8,7 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.fromLTRB(27.w, 60.h, 14.w, 40.h),
@@ -17,7 +18,7 @@ class InfoPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.information,
+                  l10n.information,
                   style: textTheme.headlineLarge,
                 ),
                 SizedBox(height: 41.h),
@@ -26,12 +27,12 @@ class InfoPage extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          AppStrings.infoParagraphOne,
+                          l10n.infoParagraphOne,
                           style: textTheme.bodySmall,
                         ),
                         SizedBox(height: 30.h),
                         Text(
-                          AppStrings.infoParagraphTwo,
+                          l10n.infoParagraphTwo,
                           style: textTheme.bodySmall,
                         ),
                       ],
@@ -48,7 +49,7 @@ class InfoPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text(
-                    AppStrings.gotIt,
+                    l10n.gotIt,
                     style: textTheme.labelSmall,
                   ),
                 ),

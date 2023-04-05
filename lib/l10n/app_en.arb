@@ -1,0 +1,21 @@
+{
+  "helloWorld": "Hello World!",
+  "myTasks": "My tasks",
+  "hideCompleted": "Hide completed",
+  "showCompleted": "Show completed",
+  "dataUpdateError": "Data update error",
+  "loadingError": "Loading error",
+  "instructionsText": "Looks like there is no tasks yet! Go ahead and push a plus button below",
+  "task": "Task",
+  "close": "Close",
+  "addATask": "Add a task",
+  "name": "Name",
+  "time": "Time",
+  "date": "Date",
+  "done": "Done",
+  "enterText": "Enter text",
+  "information": "Information",
+  "gotIt": "Got it!",
+  "infoParagraphOne": "Praesent ultricies lacus in ligula volutpat feugiat. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Fusce luctus justo eget nisi hendrerit, quis aliquam arcu porta. Cras ultricies, elit sit amet cursus consectetur, risus felis ullamcorper nulla, ut scelerisque sapien lorem non sem. Integer vestibulum ornare ligula, a placerat lectus volutpat ultrices. Aliquam commodo malesuada purus a mollis. Vestibulum pulvinar aliquam libero eu consequat.",
+  "infoParagraphTwo": "Cras massa orci, ultrices sed scelerisque id, semper vel neque. Proin a turpis quis nibh cursus hendrerit sit amet vel libero. Nullam sit amet laoreet ante. Mauris sit amet mi vitae arcu dignissim porttitor et in arcu. Nullam eleifend molestie arcu, pretium fermentum  orci feugiat eget. Integer dapibus tincidunt ipsum, at rutrum magna rutrum at. Quisque pretium convallis vestibulum."
+}

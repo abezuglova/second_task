@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
-import 'package:second_task/presentation/assets/app_strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_appbar_widget.dart';
 
@@ -43,6 +43,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
     final decoration = BoxDecoration(
       color: AppColors.timePickerColor.withOpacity(0.12),
       borderRadius: BorderRadius.all(Radius.circular(6.r)),
@@ -78,7 +79,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 37.h),
                     child: Text(
-                      AppStrings.addATask,
+                      l10n.addATask,
                       style: textTheme.headlineLarge,
                     ),
                   ),
@@ -86,7 +87,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        AppStrings.name,
+                        l10n.name,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 11.h),
@@ -100,7 +101,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                             style: textTheme.bodySmall
                                 ?.copyWith(color: Colors.black),
                             decoration: InputDecoration(
-                              hintText: AppStrings.enterText,
+                              hintText: l10n.enterText,
                               hintStyle: textTheme.bodySmall,
                               border: textFieldBorderDecoration,
                               focusedBorder: textFieldBorderDecoration,
@@ -118,7 +119,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        AppStrings.time,
+                        l10n.time,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 22.h),
@@ -152,7 +153,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        AppStrings.date,
+                        l10n.date,
                         style: textTheme.headlineMedium,
                       ),
                       SizedBox(width: 24.h),
@@ -205,7 +206,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                               Navigator.of(context).pop();
                             },
                       child: Text(
-                        AppStrings.done,
+                        l10n.done,
                         style: textTheme.labelSmall,
                       ),
                     ),

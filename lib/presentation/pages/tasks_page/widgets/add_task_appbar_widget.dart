@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
 import 'package:second_task/presentation/assets/app_icons.dart';
-import 'package:second_task/presentation/assets/app_strings.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AddTaskAppBarWidget extends StatelessWidget {
   const AddTaskAppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
     return Stack(
       children: [
         Container(
@@ -26,7 +26,7 @@ class AddTaskAppBarWidget extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              AppStrings.task,
+              l10n.task,
               style: textTheme.labelMedium,
             ),
           ),
@@ -43,7 +43,7 @@ class AddTaskAppBarWidget extends StatelessWidget {
                 SvgPicture.asset(AppIcons.chevronLeftIcon),
                 SizedBox(width: 5.w),
                 Text(
-                  AppStrings.close,
+                  l10n.close,
                   style: textTheme.bodyMedium,
                 ),
               ],

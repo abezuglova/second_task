@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:second_task/domain/entities/tasks_sort_type.dart';
-import 'package:second_task/presentation/assets/app_strings.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/error_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/instructions_screen.dart';
@@ -11,6 +10,7 @@ import 'package:second_task/presentation/pages/tasks_page/screens/updating_scree
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/floating_buttons_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasksPage extends StatelessWidget {
   const TasksPage({super.key});
@@ -18,6 +18,7 @@ class TasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
     return BlocProvider<TasksBloc>(
       create: (context) => TasksBloc(context.read())
         ..add(
@@ -35,7 +36,7 @@ class TasksPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        AppStrings.myTasks,
+                        l10n.myTasks,
                         style: textTheme.headlineLarge,
                       ),
                       BlocBuilder<TasksBloc, TasksState>(
@@ -50,8 +51,8 @@ class TasksPage extends StatelessWidget {
                                     ),
                                 child: Text(
                                   state.shouldHideButtonBeDisplayed
-                                      ? AppStrings.hideCompleted
-                                      : AppStrings.showCompleted,
+                                      ? l10n.hideCompleted
+                                      : l10n.showCompleted,
                                   style: textTheme.labelLarge,
                                 ),
                               )
@@ -71,7 +72,7 @@ class TasksPage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 16.h),
                           child: Text(
-                            AppStrings.dataUpdateError,
+                            l10n.dataUpdateError,
                             style: textTheme.bodySmall,
                             textAlign: TextAlign.center,
                           ),

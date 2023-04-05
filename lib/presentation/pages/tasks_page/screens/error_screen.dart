@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:second_task/presentation/assets/app_strings.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});
@@ -9,6 +9,7 @@ class ErrorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final l10n = AppLocalizations.of(context)!;
     return RefreshIndicator(
       onRefresh: () async {
         final tasksBloc = BlocProvider.of<TasksBloc>(context);
@@ -20,7 +21,7 @@ class ErrorScreen extends StatelessWidget {
           SliverFillRemaining(
             child: Center(
               child: Text(
-                AppStrings.loadingError,
+                l10n.loadingError,
                 style: textTheme.bodySmall,
               ),
             ),
