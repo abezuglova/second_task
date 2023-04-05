@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_icons.dart';
-import 'package:second_task/presentation/navigation/routes.dart';
+import 'package:second_task/presentation/navigation/app_routes.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_widget.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
-import 'package:second_task/presentation/navigation/routes.dart';
+import 'package:second_task/presentation/navigation/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
