@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:second_task/presentation/assets/app_colors.dart';
-import 'package:second_task/presentation/assets/app_images.dart';
+import 'package:second_task/presentation/assets/app_icons.dart';
 import 'package:second_task/presentation/assets/app_strings.dart';
 
 class AddTaskAppBarWidget extends StatelessWidget {
@@ -40,7 +40,7 @@ class AddTaskAppBarWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset(AppImages.chevronLeftIcon),
+                SvgPicture.asset(AppIcons.chevronLeftIcon),
                 SizedBox(width: 5.w),
                 Text(
                   AppStrings.close,

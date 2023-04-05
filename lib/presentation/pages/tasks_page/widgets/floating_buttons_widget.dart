@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:second_task/presentation/assets/app_images.dart';
+import 'package:second_task/presentation/assets/app_icons.dart';
 import 'package:second_task/presentation/navigation/routes.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_widget.dart';
@@ -21,7 +21,7 @@ class FloatingButtonsWidget extends StatelessWidget {
             AppRoutes.infoPageRoute,
           ),
           child: SvgPicture.asset(
-            AppImages.infoIcon,
+            AppIcons.infoIcon,
             width: 32.w,
             height: 32.w,
           ),
@@ -43,7 +43,7 @@ class FloatingButtonsWidget extends StatelessWidget {
             ),
           ),
           child: SvgPicture.asset(
-            AppImages.addIcon,
+            AppIcons.addIcon,
             width: 20.35.w,
             height: 20.35.w,
           ),

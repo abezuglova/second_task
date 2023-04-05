@@ -20,16 +20,24 @@ void main() async {
       projectId: 'tasks-99b61',
     ),
   );
-  runApp(const MyApp());
+  runApp(
+    MyApp(
+      tasksRepository: RemoteTasksRepository(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ITasksRepository tasksRepository;
+  const MyApp({
+    super.key,
+    required this.tasksRepository,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider<ITasksRepository>(
-      create: (context) => RemoteTasksRepository(),
+    return RepositoryProvider<ITasksRepository>.value(
+      value: tasksRepository,
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         splitScreenMode: true,
