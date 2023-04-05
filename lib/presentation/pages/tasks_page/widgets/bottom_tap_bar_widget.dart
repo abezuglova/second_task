@@ -39,9 +39,7 @@ class BottomTapBarWidget extends StatelessWidget {
             child: SvgPicture.asset(
               AppIcons.alphaSortIcon,
               colorFilter: ColorFilter.mode(
-                sortType == TasksSortType.alphaSort
-                    ? AppColors.textButtonColor
-                    : Colors.black,
+                _getSortButtonColor(TasksSortType.alphaSort),
                 BlendMode.srcIn,
               ),
             ),
@@ -57,27 +55,21 @@ class BottomTapBarWidget extends StatelessWidget {
             child: SvgPicture.asset(
               AppIcons.alphaReversedSortIcon,
               colorFilter: ColorFilter.mode(
-                sortType == TasksSortType.alphaReversedSort
-                    ? AppColors.textButtonColor
-                    : Colors.black,
+                _getSortButtonColor(TasksSortType.alphaReversedSort),
                 BlendMode.srcIn,
               ),
             ),
           ),
           InkWell(
-            onTap: () {
-              bloc.add(
-                const TasksEvent.tasksSortTypeChanged(
-                  sortType: TasksSortType.timeSort,
-                ),
-              );
-            },
+            onTap: () => bloc.add(
+              const TasksEvent.tasksSortTypeChanged(
+                sortType: TasksSortType.timeSort,
+              ),
+            ),
             child: SvgPicture.asset(
               AppIcons.timeSortIcon,
               colorFilter: ColorFilter.mode(
-                sortType == TasksSortType.timeSort
-                    ? AppColors.textButtonColor
-                    : Colors.black,
+                _getSortButtonColor(TasksSortType.timeSort),
                 BlendMode.srcIn,
               ),
             ),
@@ -86,4 +78,7 @@ class BottomTapBarWidget extends StatelessWidget {
       ),
     );
   }
+
+  Color _getSortButtonColor(TasksSortType appliedSortType) =>
+      appliedSortType == sortType ? AppColors.textButtonColor : Colors.black;
 }
