@@ -25,6 +25,7 @@ class TasksPage extends StatelessWidget {
           const TasksEvent.pageOpened(),
         ),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Column(
