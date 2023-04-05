@@ -12,7 +12,7 @@ class ErrorScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return RefreshIndicator(
       onRefresh: () async {
-        final tasksBloc = BlocProvider.of<TasksBloc>(context);
+        final tasksBloc = context.read<TasksBloc>();
         tasksBloc.add(const TasksEvent.pageOpened());
         await tasksBloc.stream.first;
       },

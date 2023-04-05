@@ -13,7 +13,7 @@ class BottomTapBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<TasksBloc>(context);
+    final bloc = context.read<TasksBloc>();
     return Container(
       padding: EdgeInsets.fromLTRB(0, 9.h, 0, 16.w),
       decoration: BoxDecoration(
