@@ -7,8 +7,15 @@ enum TasksSortType {
 }
 
 extension TasksSortTypeX on TasksSortType {
-  List<Task> sort(List<Task> tasksList) {
-    tasksList = [...tasksList];
+  List<Task> sort(List<Task> tasksList,
+      {required bool areCompletedTasksShown}) {
+    tasksList = [
+      ...areCompletedTasksShown
+          ? tasksList
+          : tasksList.where(
+              (task) => !task.isCompleted,
+            ),
+    ];
     switch (this) {
       case TasksSortType.alphaSort:
         return (tasksList..sort(_alphaSortComparator)).toList();

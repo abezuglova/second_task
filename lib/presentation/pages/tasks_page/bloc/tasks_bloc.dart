@@ -30,7 +30,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       _tasksList = await tasksRepository.getTasksList();
       emit(
         TasksState.loadSuccess(
-          tasksList: defaultSort.sort(_tasksList),
+          tasksList: defaultSort.sort(_tasksList, areCompletedTasksShown: true),
         ),
       );
     } catch (error, stackTrace) {
@@ -68,7 +68,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
             emit(
               state.copyWith(
                 isUpdateInProgress: false,
-                tasksList: state.sortType.sort(_tasksList),
+                tasksList: state.sortType.sort(
+                  _tasksList,
+                  areCompletedTasksShown: state.areCompletedTasksShown,
+                ),
               ),
             );
           } catch (error, stackTrace) {
@@ -111,7 +114,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
             emit(
               state.copyWith(
                 isUpdateInProgress: false,
-                tasksList: state.sortType.sort(_tasksList),
+                tasksList: state.sortType.sort(
+                  _tasksList,
+                  areCompletedTasksShown: state.areCompletedTasksShown,
+                ),
               ),
             );
           } catch (error, stackTrace) {
@@ -144,7 +150,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
               : _tasksList.where((element) => !element.isCompleted).toList();
           emit(
             state.copyWith(
-              tasksList: state.sortType.sort(tasksList),
+              tasksList: state.sortType.sort(
+                tasksList,
+                areCompletedTasksShown: event.showCompletedTasks,
+              ),
               areCompletedTasksShown: event.showCompletedTasks,
             ),
           );
@@ -159,7 +168,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         loadSuccess: (state) async {
           emit(
             state.copyWith(
-              tasksList: event.sortType.sort(_tasksList),
+              tasksList: event.sortType.sort(
+                _tasksList,
+                areCompletedTasksShown: state.areCompletedTasksShown,
+              ),
               sortType: event.sortType,
             ),
           );
