@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:second_task/domain/entities/task.dart';
 
-class TasksFirebaseDatabase {
+class FirebaseTasksDatabase {
   CollectionReference tasks = FirebaseFirestore.instance.collection('tasks');
   Future<List<Task>> getTasksList() async => (await tasks.get()).docs.map(
         (doc) {
@@ -14,13 +14,16 @@ class TasksFirebaseDatabase {
         },
       ).toList();
 
-  Future<void> addTask(Task task) async => tasks.add(
-        {
-          'name': task.name,
-          'termDateTime': task.termDateTime,
-          'isCompleted': task.isCompleted,
-        },
-      );
+  Future<String> addTask(Task task) async {
+    final doc = await tasks.add(
+      {
+        'name': task.name,
+        'termDateTime': task.termDateTime,
+        'isCompleted': task.isCompleted,
+      },
+    );
+    return doc.id;
+  }
 
   Future<void> changeStatus({
     required String id,

@@ -18,16 +18,22 @@ class MockTasksRepository implements ITasksRepository {
   ];
 
   @override
-  Future<void> addTask(Task task) async {
+  Future<String> addTask(Task task) async {
     await Future.delayed(const Duration(milliseconds: 500));
-    _tasksList.add(task.copyWith(id: _tasksList.length.toString()));
+    final id = _tasksList.length.toString();
+    _tasksList.add(
+      task.copyWith(id: id),
+    );
+    return id;
   }
 
   @override
-  Future<void> changeStatus({required String id, required bool isCompleted}) async {
+  Future<void> changeStatus(
+      {required String id, required bool isCompleted}) async {
     await Future.delayed(const Duration(milliseconds: 500));
     final taskIndex = _tasksList.indexWhere((task) => task.id == id);
-    _tasksList[taskIndex] = _tasksList[taskIndex].copyWith(isCompleted: isCompleted);
+    _tasksList[taskIndex] =
+        _tasksList[taskIndex].copyWith(isCompleted: isCompleted);
   }
 
   @override

@@ -61,8 +61,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
               termDateTime: event.taskTerm,
               isCompleted: false,
             );
-            await tasksRepository.addTask(task);
-            _tasksList = await tasksRepository.getTasksList();
+            final id = await tasksRepository.addTask(task);
+            _tasksList.add(
+              task.copyWith(id: id),
+            );
             emit(
               state.copyWith(
                 isUpdateInProgress: false,

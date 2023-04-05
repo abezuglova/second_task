@@ -1,12 +1,12 @@
-import 'package:second_task/data/datasource/remote/tasks_firebase_database.dart';
+import 'package:second_task/data/datasource/remote/firebase_tasks_database.dart';
 import 'package:second_task/domain/entities/task.dart';
 import 'package:second_task/domain/repository/i_tasks_repository.dart';
 
 class RemoteTasksRepository implements ITasksRepository {
-  final tasksDatabase = TasksFirebaseDatabase();
+  final tasksDatabase = FirebaseTasksDatabase();
 
   @override
-  Future<void> addTask(Task task) async => await tasksDatabase.addTask(task);
+  Future<String> addTask(Task task) async => await tasksDatabase.addTask(task);
 
   @override
   Future<void> changeStatus({
