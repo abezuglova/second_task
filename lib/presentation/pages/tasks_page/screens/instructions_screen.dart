@@ -23,12 +23,13 @@ class InstructionsScreen extends StatelessWidget {
               style: textTheme.bodySmall,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(32.w, 41.h, 0, 0),
-            child: SizedBox(
-              width: 232.w,
-              height: 404.h,
-              child: SvgPicture.asset(AppImages.arrow),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(32.w, 41.h, 0, 92.h),
+              child: SvgPicture.asset(
+                AppImages.arrow,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ],

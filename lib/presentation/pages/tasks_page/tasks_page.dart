@@ -26,83 +26,85 @@ class TasksPage extends StatelessWidget {
         ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(27.w, 60.h, 14.w, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        l10n.myTasks,
-                        style: textTheme.headlineLarge,
-                      ),
-                      BlocBuilder<TasksBloc, TasksState>(
-                        builder: (context, state) => state.hasCompletedTasks
-                            ? TextButton(
-                                onPressed: () => context.read<TasksBloc>().add(
-                                      TasksEvent
-                                          .showCompletedTasksStatusChanged(
-                                        showCompletedTasks:
-                                            !state.shouldHideButtonBeDisplayed,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(27.w, 37.h, 14.w, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          l10n.myTasks,
+                          style: textTheme.headlineLarge,
+                        ),
+                        BlocBuilder<TasksBloc, TasksState>(
+                          builder: (context, state) => state.hasCompletedTasks
+                              ? TextButton(
+                                  onPressed: () => context.read<TasksBloc>().add(
+                                        TasksEvent
+                                            .showCompletedTasksStatusChanged(
+                                          showCompletedTasks:
+                                              !state.shouldHideButtonBeDisplayed,
+                                        ),
                                       ),
-                                    ),
-                                child: Text(
-                                  state.shouldHideButtonBeDisplayed
-                                      ? l10n.hideCompleted
-                                      : l10n.showCompleted,
-                                  style: textTheme.labelLarge,
-                                ),
-                              )
-                            : const SizedBox(),
-                      ),
-                    ],
+                                  child: Text(
+                                    state.shouldHideButtonBeDisplayed
+                                        ? l10n.hideCompleted
+                                        : l10n.showCompleted,
+                                    style: textTheme.labelLarge,
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: BlocConsumer<TasksBloc, TasksState>(
-                    listenWhen: (previous, current) =>
-                        current is TasksLoadSuccess &&
-                        current.updatingError != null,
-                    listener: (context, state) => showDialog(
-                      context: context,
-                      builder: (context) => Dialog(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 16.h),
-                          child: Text(
-                            l10n.dataUpdateError,
-                            style: textTheme.bodySmall,
-                            textAlign: TextAlign.center,
+                  Expanded(
+                    child: BlocConsumer<TasksBloc, TasksState>(
+                      listenWhen: (previous, current) =>
+                          current is TasksLoadSuccess &&
+                          current.updatingError != null,
+                      listener: (context, state) => showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.h),
+                            child: Text(
+                              l10n.dataUpdateError,
+                              style: textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    builder: (context, state) => state.map(
-                      loadInProgress: (state) => const LoadingScreen(),
-                      loadFailure: (state) => const ErrorScreen(),
-                      loadSuccess: (state) => state.tasksList.isEmpty
-                          ? const InstructionsScreen()
-                          : UpdatingScreenWrapper(
-                              isUpdateInProgress: state.isUpdateInProgress,
-                              child: TasksScreen(
-                                tasksList: state.tasksList,
+                      builder: (context, state) => state.map(
+                        loadInProgress: (state) => const LoadingScreen(),
+                        loadFailure: (state) => const ErrorScreen(),
+                        loadSuccess: (state) => state.tasksList.isEmpty
+                            ? const InstructionsScreen()
+                            : UpdatingScreenWrapper(
+                                isUpdateInProgress: state.isUpdateInProgress,
+                                child: TasksScreen(
+                                  tasksList: state.tasksList,
+                                ),
                               ),
-                            ),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 20.h,
-              left: 20.w,
-              right: 20.w,
-              child: const FloatingButtonsWidget(),
-            ),
-          ],
+                ],
+              ),
+              Positioned(
+                bottom: 20.h,
+                left: 20.w,
+                right: 20.w,
+                child: const FloatingButtonsWidget(),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar:
             BlocSelector<TasksBloc, TasksState, TasksSortType?>(

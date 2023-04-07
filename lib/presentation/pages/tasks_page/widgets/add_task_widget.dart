@@ -23,25 +23,9 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
   DateTime time = DateTime.now();
   DateTime date = DateTime.now();
 
-  void _showDialog(Widget child) {
-    showCupertinoModalPopup<void>(
-        context: context,
-        builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              color: CupertinoColors.systemBackground.resolveFrom(context),
-              child: SafeArea(
-                top: false,
-                child: child,
-              ),
-            ));
-  }
-
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     final textTheme = Theme.of(context).textTheme;
     final l10n = AppLocalizations.of(context)!;
     final decoration = BoxDecoration(
@@ -58,7 +42,8 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
         width: 375.w,
-        height: 773.h,
+        height:
+            mediaQuery.size.height - mediaQuery.systemGestureInsets.top - 10,
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -124,7 +109,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                       ),
                       SizedBox(width: 22.h),
                       GestureDetector(
-                        onTap: () => _showDialog(
+                        onTap: () => _showDateTimeSelectDialog(
                           CupertinoDatePicker(
                             initialDateTime: time,
                             mode: CupertinoDatePickerMode.time,
@@ -158,7 +143,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                       ),
                       SizedBox(width: 24.h),
                       GestureDetector(
-                        onTap: () => _showDialog(
+                        onTap: () => _showDateTimeSelectDialog(
                           CupertinoDatePicker(
                             initialDateTime: date,
                             mode: CupertinoDatePickerMode.date,
@@ -218,5 +203,22 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
         ),
       ),
     );
+  }
+
+  void _showDateTimeSelectDialog(Widget child) {
+    showCupertinoModalPopup<void>(
+        context: context,
+        builder: (BuildContext context) => Container(
+              height: 216,
+              padding: const EdgeInsets.only(top: 6.0),
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              color: CupertinoColors.systemBackground.resolveFrom(context),
+              child: SafeArea(
+                top: false,
+                child: child,
+              ),
+            ));
   }
 }
