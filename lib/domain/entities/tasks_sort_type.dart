@@ -56,6 +56,6 @@ extension TasksSortTypeX on TasksSortType {
   int _timeSortComparator(Task task1, Task task2) => _statusComparator(
         task1,
         task2,
-        (task1, task2) => task1.termDateTime.compareTo(task2.termDateTime),
+        (task1, task2) => task2.termDateTime.compareTo(task1.termDateTime),
       );
 }
