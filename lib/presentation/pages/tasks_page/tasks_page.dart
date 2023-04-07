@@ -8,7 +8,7 @@ import 'package:second_task/presentation/pages/tasks_page/screens/loading_screen
 import 'package:second_task/presentation/pages/tasks_page/screens/tasks_screen.dart';
 import 'package:second_task/presentation/pages/tasks_page/screens/updating_screen_wrapper.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/bottom_tap_bar_widget.dart';
-import 'package:second_task/presentation/pages/tasks_page/widgets/floating_buttons_widget.dart';
+import 'package:second_task/presentation/pages/tasks_page/widgets/floating_action_buttons_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -101,7 +101,7 @@ class TasksPage extends StatelessWidget {
                 bottom: 20.h,
                 left: 20.w,
                 right: 20.w,
-                child: const FloatingButtonsWidget(),
+                child: const FloatingActionButtonsWidget(),
               ),
             ],
           ),

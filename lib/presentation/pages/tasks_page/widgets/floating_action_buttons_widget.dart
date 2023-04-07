@@ -7,8 +7,8 @@ import 'package:second_task/presentation/navigation/app_routes.dart';
 import 'package:second_task/presentation/pages/tasks_page/bloc/tasks_bloc.dart';
 import 'package:second_task/presentation/pages/tasks_page/widgets/add_task_widget.dart';
 
-class FloatingButtonsWidget extends StatelessWidget {
-  const FloatingButtonsWidget({super.key});
+class FloatingActionButtonsWidget extends StatelessWidget {
+  const FloatingActionButtonsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
