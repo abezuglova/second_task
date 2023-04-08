@@ -13,47 +13,40 @@ class InfoPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27.w, 37.h, 14.w, 40.h),
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    l10n.information,
-                    style: textTheme.headlineLarge,
-                  ),
-                  SizedBox(height: 41.h),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Text(
-                            l10n.infoParagraphOne,
-                            style: textTheme.bodySmall,
-                          ),
-                          SizedBox(height: 30.h),
-                          Text(
-                            l10n.infoParagraphTwo,
-                            style: textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 64.h),
-                ],
+              Text(
+                l10n.information,
+                style: textTheme.headlineLarge,
               ),
-              Positioned(
-                bottom: 0,
-                child: SizedBox(
-                  width: 315.w,
-                  height: 46.h,
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(
-                      l10n.gotIt,
-                      style: textTheme.labelSmall,
-                    ),
+              SizedBox(height: 41.h),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        l10n.infoParagraphOne,
+                        style: textTheme.bodySmall,
+                      ),
+                      SizedBox(height: 30.h),
+                      Text(
+                        l10n.infoParagraphTwo,
+                        style: textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 18.h),
+              SizedBox(
+                width: 315.w,
+                height: 46.h,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    l10n.gotIt,
+                    style: textTheme.labelSmall,
                   ),
                 ),
               ),
